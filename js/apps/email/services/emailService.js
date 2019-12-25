@@ -46,6 +46,7 @@ function changeIsRead(email) {
         if (email.id === currEmail.id) currEmail.isRead = true;
         return currEmail;
     })
+    return Promise.resolve(true);
 }
 
 function createEmails() {
