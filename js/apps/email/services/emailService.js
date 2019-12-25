@@ -1,5 +1,6 @@
 'use strict'
 import storageService from '.../services/storageService.js'
+import getRandomId from '.../services/utils.js'
 export default { getEmails }
 
 let gEmails = storageService.load('gEmails') || createEmails()
@@ -17,6 +18,7 @@ function getEmails(query) {
 
 function createEmails(subject, body, isRead, sentAt) {
     return email = {
+        id: getRandomId(),
         subject,
         body,
         isRead,
