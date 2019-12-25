@@ -13,11 +13,8 @@ function getEmailById(emailId) {
 }
 
 function deleteEmail(email) {
-    console.log(email);
-    console.log('before',gEmails)
     gEmails = gEmails.filter((currEmail) => currEmail.id !== email.id)
     storageService.store('gEmails', gEmails)
-    console.log('after',gEmails)
     return Promise.resolve(true)
 }
 

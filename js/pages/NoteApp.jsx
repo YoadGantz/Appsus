@@ -1,5 +1,21 @@
-export default class NoteApp extends React.Component {
+import NotePage from "../apps/note/pages/NotePage.jsx";
+import NoteEditPage from "../apps/note/pages/NoteEditPage.jsx";
+
+const Router = ReactRouterDOM.HashRouter
+const { Route, Switch } = ReactRouterDOM
+const { createBrowserHistory } = History
+const history = createBrowserHistory()
+
+export default class EmailApp extends React.Component {
     render() {
-        return <h1>This will be our notes</h1>
+        return (<content>
+            <Router history={history}>
+                <Switch>
+                    <Route component={NotePage} path="/note"></Route>
+                    <Route component={NoteEditPage} path="/note/:id"></Route>
+                </Switch>
+            </Router>
+        </content>
+        )
     }
 }
