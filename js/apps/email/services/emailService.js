@@ -1,7 +1,7 @@
 'use strict'
 
 import storageService from '...../services/storageService.js'
-import getRandomId from '...../services/utils.js'
+import utils from '...../services/utils.js'
 
 export default { getEmails }
 
@@ -18,25 +18,28 @@ function getEmails(query) {
     return Promise.resolve(emails)
 }
 
-function createEmails(subject, body, isRead, sentAt) {
-    return email = {
-        id: getRandomId(),
+function createEmail(subject, body, isRead, sentAt) {
+    const email = {
+        id: utils.getRandomId(),
         subject,
         body,
         isRead,
         sentAt
     }
+    console.log(email);
+    return email
+    
 }
 
 function createEmails() {
     let emails = []
-    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    emails.push(createEmail('Wassap?', 'Pick up!', false, Date.now()))
+    emails.push(createEmail('Wassap?', 'Pick up!', false, Date.now()))
+    emails.push(createEmail('Wassap?', 'Pick up!', false, Date.now()))
+    emails.push(createEmail('Wassap?', 'Pick up!', false, Date.now()))
+    emails.push(createEmail('Wassap?', 'Pick up!', false, Date.now()))
+    emails.push(createEmail('Wassap?', 'Pick up!', false, Date.now()))
+    emails.push(createEmail('Wassap?', 'Pick up!', false, Date.now()))
 
     storageService.store('gEmails', emails)
     return emails
