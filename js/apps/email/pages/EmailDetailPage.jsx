@@ -18,7 +18,7 @@ export default class EmailDetailPage extends React.Component {
 
     loadEmail() {
         const { id } = this.props.match.params;
-
+        
         emailService.getEmailById(id).then(email => {
             this.setState({ email })
             emailService.changeIsRead(email);

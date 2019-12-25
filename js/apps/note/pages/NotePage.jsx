@@ -1,4 +1,5 @@
 import noteService from "../services/noteService.js";
+import AddNote from "../noteCmp/AddNote.jsx";
 import NoteList from "../noteCmp/NoteList.jsx";
 
 export default class InboxPage extends React.Component {
@@ -14,6 +15,9 @@ export default class InboxPage extends React.Component {
         noteService.getNotes(this.state.filterBy).then(notes => { this.setState({ notes }) })
     }
     render() {
-        return <NoteList notes={this.state.notes}></NoteList>
+        return <React.Fragment>
+            <AddNote></AddNote>
+            <NoteList notes={this.state.notes}></NoteList>
+        </React.Fragment>
     }
 }

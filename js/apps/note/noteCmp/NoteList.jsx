@@ -2,7 +2,7 @@
 
 import DynamicNotePrev from './DynamicNotePrev.jsx'
 
-export default class NoteList extends React.Component {
+export default class NoteList extends React.Component { //switch to function maybe 
     render() {
         return (
             <ul>
