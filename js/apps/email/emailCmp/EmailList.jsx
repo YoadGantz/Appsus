@@ -1,10 +1,12 @@
 'use strict'
 
-import EmailPreview from "../emailCmp/EmailPreview.jsx";
+import EmailPreview from "./EmailPreview.jsx";
 
-export default class EmailListPage extends React.Component {
+
+export default class EmailList extends React.Component {
+ 
+
     render() {
-        console.log(this.props.emails);
         return (
             <ul>
                 {this.props.emails.map(email => 

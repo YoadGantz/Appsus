@@ -7,7 +7,7 @@ export default function NavBar() {
                 <NavLink activeClassName="active" to='/' exact>Home Page</NavLink>
             </li>
             <li>
-                <NavLink activeClassName="active" to='/email' exact>Emails</NavLink>
+                <NavLink activeClassName="active" to='/email/inbox' exact>Emails</NavLink>
             </li>
             <li>
                 <NavLink activeClassName="active" to='/note'>Notes</NavLink>

@@ -17,7 +17,7 @@ class Appsus extends React.Component {
                     <NavBar></NavBar>
                     <Switch>
                         <Route component={Home} path="/" exact></Route>
-                        <Route component={EmailApp} path="/email" exact></Route>
+                        <Route component={EmailApp} path="/email"></Route>
                         <Route component={NoteApp} path="/note" exact></Route>
                     </Switch>
                 </Router>
