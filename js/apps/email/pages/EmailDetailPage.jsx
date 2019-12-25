@@ -28,8 +28,14 @@ export default class EmailDetailPage extends React.Component {
         this.props.history.push('/email/inbox')
     }
 
+    onDelete = (email)=>{
+        emailService.deleteEmail(email).then(()=>{
+            this.props.history.push('/email/inbox')
+        });
+    }
+
     render() {
         if (!this.state.email) return <div className="loading"> Loading...</div>
-        return <EmailDetail email={this.state.email} goBack={this.goBack}></EmailDetail>
+        return <EmailDetail email={this.state.email} delete={() => this.onDelete(this.state.email)} goBack={this.goBack}></EmailDetail>
     }
 }
