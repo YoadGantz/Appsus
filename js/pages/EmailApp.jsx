@@ -1,8 +1,9 @@
-import EmailListPage from "../apps/email/pages/EmailListPage";
+import EmailListPage from "../apps/email/pages/EmailListPage.jsx";
+import emailService from "../apps/email/services/emailService.js"
 
-export default class EmailPage extends React.Component {
+export default class EmailApp extends React.Component {
     state = {
-        emails = []
+        emails: []
     }
     
     componentDidMount() {

@@ -1,5 +1,5 @@
 'use strict'
-import storageService from '.../services/storageService.js'
+import storageService from '...../services/storageService.js'
 export default { getEmails }
 
 let gEmails = storageService.load('gEmails') || createEmails()
@@ -25,15 +25,15 @@ function createEmails(subject, body, isRead, sentAt) {
 }
 
 function createEmails() {
-    gEmails = []
-    gEmails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    gEmails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    gEmails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    gEmails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    gEmails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    gEmails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
-    gEmails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    let emails = []
+    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
+    emails.push({ subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 })
 
-    storageService.store('gEmails', gEmails)
-    return gEmails
+    storageService.store('gEmails', emails)
+    return emails
 }
