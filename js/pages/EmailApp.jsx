@@ -1,22 +1,25 @@
-import EmailListPage from "../apps/email/pages/EmailListPage.jsx";
-import emailService from "../apps/email/services/emailService.js"
+import InboxPage from "../apps/email/pages/InboxPage.jsx";
+import SentPage from "../apps/email/pages/SentPage.jsx";
+// import EmailDetailPage from "../apps/email/pages/EmailDetailPage.jsx";
+import EmailNavBar from "../apps/email/emailCmp/EmailNavBar.jsx"
+
+const Router = ReactRouterDOM.HashRouter
+const { Route, Switch } = ReactRouterDOM
+const { createBrowserHistory } = History
+const history = createBrowserHistory()
 
 export default class EmailApp extends React.Component {
-    state = {
-        emails: []
-    }
-    
-    componentDidMount() {
-        this.loadEmails();
-    }
-
-    loadEmails = () => {
-        emailService.getEmails(this.state.filterBy).then(emails => { this.setState({ emails }) })
-    }
-
-
-
     render() {
-        return <EmailListPage emails={this.state.emails}></EmailListPage>
+        return (<main>
+            <Router history={history}>
+                <EmailNavBar></EmailNavBar>
+                <Switch>
+                    <Route component={InboxPage} path="/email/inbox"></Route>
+                    <Route component={SentPage} path="/email/sent"></Route>
+                    {/* <Route component={EmailDetailPage} path="/email/:id"></Route> */}
+                </Switch>
+            </Router>
+        </main>
+        )
     }
 }
