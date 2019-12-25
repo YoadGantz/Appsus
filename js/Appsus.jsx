@@ -12,7 +12,7 @@ class Appsus extends React.Component {
 
     render() {
         return (
-            <main>
+            <main className="flex column">
                 <Router history={history}>
                     <NavBar></NavBar>
                     <Switch>

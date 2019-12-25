@@ -1,8 +1,8 @@
 const { NavLink } = ReactRouterDOM
 
 export default function NavBar() {
-    return <nav>
-        <ul>
+    return <nav className="app-nav">
+        <ul className="flex">
             <li>
                 <NavLink activeClassName="active" to='/' exact>Home Page</NavLink>
             </li>

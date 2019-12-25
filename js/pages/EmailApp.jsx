@@ -10,7 +10,7 @@ const history = createBrowserHistory()
 
 export default class EmailApp extends React.Component {
     render() {
-        return (<main>
+        return (<content className="flex">
             <Router history={history}>
                 <EmailNavBar></EmailNavBar>
                 <Switch>
@@ -19,7 +19,7 @@ export default class EmailApp extends React.Component {
                     {/* <Route component={EmailDetailPage} path="/email/:id"></Route> */}
                 </Switch>
             </Router>
-        </main>
+        </content>
         )
     }
 }

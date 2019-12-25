@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background-color: aquamarine;
+}
+ul {
+    margin: 0;
+}
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.active {
+    color: white;
+    background-color: blue;
+}
+
+.app-nav {
+    background-color: red;
+    height: 80px;
+}
+
+.email-nav {
+    background-color: khaki;
+    top: 80px;
+    width: 100px;
+    height: calc(100vh - 80px);
+}
+
+
+/* Layout */
+
+/* Helpers */
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.fixed {
+    position: fixed;
+}
