@@ -25,7 +25,7 @@ export default class EmailDetailPage extends React.Component {
     }
 
     goBack = () => { //if sent go back to sent, get it from match.. 
-        this.props.history.push('/inbox')
+        this.props.history.push('/email/inbox')
     }
 
     render() {
