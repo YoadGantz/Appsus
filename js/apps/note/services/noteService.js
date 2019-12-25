@@ -42,10 +42,10 @@ function createNote(type, isPinned, info) {
 
 function createNotes() {
     let notes = []
-    notes.push(createNote('NoteText', true, {txt:"This is AWESOME"}))
-    notes.push(createNote('NoteText', true, {txt:"This is AWESOME"}))
-    notes.push(createNote('NoteText', true, {txt:"This is AWESOME"}))
-    notes.push(createNote('NoteImage', true, {url:"https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"}))
+    notes.push(createNote('NoteText', true, {txtInput:"This is AWESOME"}))
+    notes.push(createNote('NoteText', true, {txtInput:"This is AWESOME"}))
+    notes.push(createNote('NoteText', true, {txtInput:"This is AWESOME"}))
+    notes.push(createNote('NoteImage', true, {txtInput:"https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"}))
     
     storageService.store('gNotes', notes)
     return notes
