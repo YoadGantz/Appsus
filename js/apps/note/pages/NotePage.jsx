@@ -11,9 +11,9 @@ export default class InboxPage extends React.Component {
     }
 
     loadNotes = () => {
-        noteService.getNotes(this.state.filterBy).then(note => { this.setState({ notes }) })
+        noteService.getNotes(this.state.filterBy).then(notes => { this.setState({ notes }) })
     }
     render() {
-        return <NoteList emails={this.state.notes}></NoteList>
+        return <NoteList notes={this.state.notes}></NoteList>
     }
 }
