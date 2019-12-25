@@ -1,6 +1,6 @@
 'use strict'
 
-export default class EmailPreviw extends React.Component {
+export default class EmailPreview extends React.Component {
     render() {
         const email = this.props.email;
 
