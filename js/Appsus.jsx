@@ -1,3 +1,4 @@
+import NavBar from '../js/cmps/NavBar.jsx'
 import HomePage from "./pages/HomePage.jsx"
 import EmailPage from "./pages/EmailPage.jsx"
 import NotePage from "./pages/NotePage.jsx"
@@ -13,7 +14,7 @@ class Appsus extends React.Component {
         return (
             <main>
                 <Router history={history}>
-                    {/* <NavBar></NavBar> */}
+                    <NavBar></NavBar>
                     <Switch>
                         <Route component={HomePage} path="/" exact></Route>
                         <Route component={EmailPage} path="/email" exact></Route>
