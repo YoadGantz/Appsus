@@ -21,6 +21,7 @@ export default class EmailDetailPage extends React.Component {
 
         emailService.getEmailById(id).then(email => {
             this.setState({ email })
+            emailService.changeIsRead(email);
         })
     }
 

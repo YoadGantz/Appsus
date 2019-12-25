@@ -37,6 +37,10 @@ a {
 
 /* Layout */
 
+.not-read {
+    font-weight: bold;
+}
+
 /* Helpers */
 
 .flex {
