@@ -1,6 +1,6 @@
-import HomePage from "./pages/HomePage.jsx"
-import EmailPage from "./pages/EmailPage.jsx"
-import NotePage from "./pages/NotePage.jsx"
+import HomePage from "./pages/Home.jsx/index.js"
+import EmailPage from "./pages/EmailApp.jsx/index.js"
+import NotePage from "./pages/NoteApp.jsx/index.js"
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
