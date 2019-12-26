@@ -10,10 +10,9 @@ export default class NoteList extends React.Component { //switch to function may
                     <DynamicNotePrev
                     key={note.id} 
                     onChangeBGColor={this.props.onChangeBGColor} 
-                    delete={this.props.delete} note={this.props.note} 
-                    onChangeColor={this.props.onChangeColor}
-                    note={note}>
-    
+                    delete={this.props.delete} 
+                    note={note} 
+                    onChangeColor={this.props.onChangeColor}>
                     </DynamicNotePrev>
                 )}
             </ul>

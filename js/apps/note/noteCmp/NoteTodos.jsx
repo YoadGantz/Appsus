@@ -1,3 +1,4 @@
+import NoteEditControl from "./NoteEditControl.jsx"
 export default class NoteTodos extends React.Component {
     state = { currTodo: null }
 
@@ -8,13 +9,24 @@ export default class NoteTodos extends React.Component {
 
     render() {
         let todos = this.props.note.info.txtInput
-        console.log(todos)
-        return <li>
-            <ul>{todos.map((todo, i) => {
-                console.log("todoisDone inside render", todo.isDone)
-                return <li className={(todo.isDone ? 'done' : '')} key={i}>{todo.txtInput}<input type="checkbox" onClick={() => this.todoDone(todo)} /></li>
-            })}
-            </ul>
-        </li>
+        return <React.Fragment>
+            <li>
+                <ul>{todos.map((todo, i) => {
+
+                    return <li className={(todo.isDone ? 'done' : '')} key={i}>{todo.txtInput}
+                        <input type="checkbox" onClick={() => this.todoDone(todo)} />
+                    </li>
+
+                })}
+                </ul>
+            </li>
+            <NoteEditControl
+                delete={this.props.delete}
+                note={this.props.note}
+                onChangeBGColor={this.props.onChangeBGColor}
+                onChangeColor={this.props.onChangeColor}
+            ></NoteEditControl>
+
+        </React.Fragment>
     }
 }
