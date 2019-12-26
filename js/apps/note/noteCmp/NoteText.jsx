@@ -4,6 +4,8 @@ export default class NoteText extends React.Component {
 
     render() {
         let style = this.props.note.style || 'none';
+        console.log("this.props.note.style",this.props.note.style)
+        console.log("this.props.note.style",this.props.note)
         let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
         let color = style.color || 'black';
         return <li style={{ backgroundColor: bgc, color: color }}>

@@ -11,7 +11,6 @@ export default class AddNote extends React.Component {
 
     onSave = () => {
         this.props.onAddNote(this.state.type, this.state.infoTxt)
-        console.log("info txt ",this.state.infoTxt)
         this.setState({ infoTxt: '' })
     }
 
@@ -32,22 +31,22 @@ export default class AddNote extends React.Component {
             {/* create another comp for the labels. */}
 
             <label htmlFor="NoteText">
-                <img height="20px" src="../imgs/icons/txt.png" />
+                <img height="20px" src="../imgs/icons/txt.svg" />
             </label>
             <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteText" id="NoteText" />
 
             <label htmlFor="NoteTodos">
-                <img height="20px" src="../imgs/icons/toDo.png" />
+                <img height="20px" src="../imgs/icons/todo.svg" />
             </label>
             <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteTodos" id="NoteTodos" />
 
             <label htmlFor="NoteImage">
-                <img height="20px" src="../imgs/icons/img.png"/>
+                <img height="20px" src="../imgs/icons/img.svg"/>
             </label>
             <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteImage" id="NoteImage"/>
 
             <label htmlFor="NoteVideo">
-                    <img height="20px" src="../imgs/icons/vid.png"/>
+                    <img height="20px" src="../imgs/icons/vid.svg"/>
             </label>
             <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteVideo" id="NoteVideo"/>
         </div>
