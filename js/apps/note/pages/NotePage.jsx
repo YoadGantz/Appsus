@@ -18,13 +18,11 @@ export default class InboxPage extends React.Component {
     }
 
     onChangeBGColor = (note, color) => {
-        noteService.changeBGColor(note, color)
-        this.loadNotes();
+        noteService.changeBGColor(id, color).then(this.loadNotes)
     }
 
     onChangeColor = (note, color) => {
-        noteService.changeColor(note, color)
-        this.loadNotes();
+        noteService.changeColor(note, color).then(this.loadNotes)
     }
 
     loadNotes = () => {
