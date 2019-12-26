@@ -22,36 +22,37 @@ function getNotes(query) {
     return Promise.resolve(notes)
 }
 
-function addNote(newNoteDetails) {
-    let newNote = createNote(newNoteDetails.type, newNoteDetails.isPinned, newNoteDetails.info)
+function addNote(noteType, noteInfo) {
+    let newNote = createNote(noteType, noteInfo)
     gNotes = [...gNotes, newNote]
     storageService.store('gNotes', gNotes)
     return Promise.resolve(newNote)
 }
 
 function deleteNote(note) {
-    console.log(note);
     gNotes = gNotes.filter((currNote) => currNote.id !== note.id)
     storageService.store('gNotes', gNotes)
     return Promise.resolve(true)
 }
 
-function createNote(type, isPinned, info) {
+function createNote(type, info) {
     const note = {
         id: utils.getRandomId(),
         type,
         isPinned: false,
-        info
+        info: {
+            txtInput: info
+        }
     }
     return note
 }
 
 function createNotes() { // consider creating a constructor for note 
     let notes = []
-    notes.push(createNote('NoteText', true, { txtInput: "This is AWESOME" }))
-    notes.push(createNote('NoteText', true, { txtInput: "This is AWESOME" }))
-    notes.push(createNote('NoteText', true, { txtInput: "This is AWESOME" }))
-    notes.push(createNote('NoteImage', true, { txtInput: "https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg" }))
+    notes.push(createNote('NoteText', "This is AWESOME"))
+    notes.push(createNote('NoteText', "This is AWESOME"))
+    notes.push(createNote('NoteText', "This is AWESOME"))
+    notes.push(createNote('NoteImage', "https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"))
 
     storageService.store('gNotes', notes)
     return notes
