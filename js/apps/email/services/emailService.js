@@ -36,9 +36,7 @@ function createEmail(subject, body, isRead, sentAt) {
         isRead,
         sentAt
     }
-    console.log(email);
     return email
-
 }
 
 function changeIsRead(email) {

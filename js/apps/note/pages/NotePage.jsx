@@ -28,18 +28,15 @@ export default class InboxPage extends React.Component {
     }
 
     loadNotes = () => {
-        console.log(this.state.filterBy);
-        
         noteService.query(this.state.filterBy).then(notes => { this.setState({ notes }) })
     }
 
     onAddNote = (noteType, noteInfo) => {
         return noteService.addNote(noteType, noteInfo).then(newNote => { this.loadNotes() })
-
     }
 
-    handleChange = (changeFilter) =>{
-        this.setState({filterBy : changeFilter}, this.loadNotes)
+    handleChange = (changeFilter) => {
+        this.setState({ filterBy: changeFilter }, this.loadNotes)
     }
 
     render() {
