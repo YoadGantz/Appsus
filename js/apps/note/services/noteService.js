@@ -32,7 +32,7 @@ function addNote(noteType, noteInfo) {
 function deleteNote(note) {
     gNotes = gNotes.filter((currNote) => currNote.id !== note.id)
     storageService.store('gNotes', gNotes)
-    return Promise.resolve(true)
+    return Promise.resolve(gNotes)
 }
 
 function createNote(type, info) {

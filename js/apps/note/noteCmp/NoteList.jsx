@@ -7,7 +7,7 @@ export default class NoteList extends React.Component { //switch to function may
         return (
             <ul>
                 {this.props.notes.map(note =>
-                    <DynamicNotePrev key={note.id} note={note}></DynamicNotePrev>
+                    <DynamicNotePrev delete={this.props.delete} key={note.id} note={note}></DynamicNotePrev>
                 )}
             </ul>
         )
