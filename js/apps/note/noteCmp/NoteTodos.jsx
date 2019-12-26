@@ -18,5 +18,3 @@ export default class NoteTodos extends React.Component {
         </li>
     }
 }
-
-// onClick={() => this.props.delete(this.props.note)}

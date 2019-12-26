@@ -36,6 +36,12 @@ function addNote(noteType, noteInfo) {
                 isDone: false
             }
         })
+    } else if (noteType === 'NoteVideo') {
+        let vidUrl = noteInfo
+        let findIdxOfId = vidUrl.indexOf('=') + 1
+        let vidId = vidUrl.substring(findIdxOfId)
+        vidUrl = `https://www.youtube.com/embed/${vidId}`
+        noteInfo = vidUrl
     }
 
     let newNote = createNote(noteType, noteInfo)
