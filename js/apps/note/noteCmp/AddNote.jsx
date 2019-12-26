@@ -11,15 +11,14 @@ export default class AddNote extends React.Component {
 
     onSave = () => {
         this.props.onAddNote(this.state.type, this.state.infoTxt)
+        this.setState({ infoTxt: '' })
     }
 
     inputChange = (ev) => {
-        console.log(ev.target.value)
         this.setState({ infoTxt: ev.target.value })
     }
 
     render() {
-        // console.log(this.state)
         return <div>
             <div>
                 <input type="text" placeholder="info"
