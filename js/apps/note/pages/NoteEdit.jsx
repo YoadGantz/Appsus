@@ -28,9 +28,18 @@ export default class NoteEdit extends React.Component {
     }
 
     onDelete = (note) => {
-        noteService.deleteNote(note).then(() => {
-            this.props.history.push('/note')
-        });
+        noteService.deleteNote(note)
+        this.props.history.push('/note')
+    }
+
+    onChangeBGColor = (note, color) => {
+        noteService.changeBGColor(note, color)
+        this.loadNote();
+    }
+
+    onChangeColor = (note, color) => {
+        noteService.changeColor(note, color)
+        this.loadNote();
     }
 
     render() {
@@ -39,9 +48,9 @@ export default class NoteEdit extends React.Component {
         if (!this.state.note) return <div className="loading"> Loading...</div>
         return <ul>
             <DynamicNotePrev
-                onChangeBGColor={this.props.onChangeBGColor}
-                delete={this.props.delete} note={this.props.note}
-                onChangeColor={this.props.onChangeColor}
+                onChangeBGColor={this.onChangeBGColor}
+                delete={this.onDelete}
+                onChangeColor={this.onChangeColor}
                 note={this.state.note}>
             </DynamicNotePrev>
         </ul>
