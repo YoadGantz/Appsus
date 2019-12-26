@@ -29,8 +29,8 @@ export default class InboxPage extends React.Component {
         noteService.getNotes(this.state.filterBy).then(notes => { this.setState({ notes }) })
     }
 
-    onAddNote = (noteType,noteInfo) => {
-       return noteService.addNote(noteType,noteInfo).then(newNote => { this.loadNotes()}) 
+    onAddNote = (noteType, noteInfo) => {
+        return noteService.addNote(noteType, noteInfo).then(newNote => { this.loadNotes() })
 
     }
 
@@ -42,7 +42,6 @@ export default class InboxPage extends React.Component {
                 onChangeBGColor={this.onChangeBGColor}
                 delete={this.onDelete}
                 notes={this.state.notes}>
-
             </NoteList>
 
         </React.Fragment>

@@ -1,7 +1,6 @@
 import noteService from "../services/noteService.js";
-import DynamicNotePrev from "../noteCmp/DynamicNotePrev.jsx";
-
-export default class NoteEdit extends React.Component {
+import NoteEdit from "../noteCmp/NoteEdit.jsx"
+export default class NoteEditPage extends React.Component {
     state = {
         note: ''
     }
@@ -47,12 +46,13 @@ export default class NoteEdit extends React.Component {
 
         if (!this.state.note) return <div className="loading"> Loading...</div>
         return <ul>
-            <DynamicNotePrev
+            <NoteEdit
                 onChangeBGColor={this.onChangeBGColor}
                 delete={this.onDelete}
                 onChangeColor={this.onChangeColor}
                 note={this.state.note}>
-            </DynamicNotePrev>
+
+            </NoteEdit>
         </ul>
     }
 }
