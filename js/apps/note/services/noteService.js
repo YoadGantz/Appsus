@@ -22,8 +22,18 @@ function getNotes(query) {
     return Promise.resolve(notes)
 }
 
-function addNote(newNoteDetails) {
-    let newNote = createNote(newNoteDetails.type, newNoteDetails.isPinned, newNoteDetails.info)
+function addNote(noteType, noteInfo) {
+    if (noteType === 'NoteTodos') {
+        let todos = noteInfo.split(', ')
+        noteInfo = todos.map((todo) => {
+            return {
+                txtInput: todo,
+                isDone: false
+            }
+        })
+    }
+
+    let newNote = createNote(noteType, noteInfo)
     gNotes = [...gNotes, newNote]
     storageService.store('gNotes', gNotes)
     return Promise.resolve(newNote)
@@ -37,44 +47,46 @@ function deleteNote(note) {
 
 function changeBGColor(note, color) {
     let editNote = gNotes.find(currNote => currNote.id === note.id)
-    editNote = {...editNote}
-    editNote.style = {...editNote.style} || {};
+    editNote = { ...editNote }
+    editNote.style = { ...editNote.style } || {};
     editNote.style.backgroundColor = color;
-    gNotes = gNotes.map(note=> editNote.id === note.id ? editNote : note);
+    gNotes = gNotes.map(note => editNote.id === note.id ? editNote : note);
     storageService.store('gNotes', gNotes)
 
     return Promise.resolve(editNote)
-    
+
 }
 
 function changeColor(note, color) {
     let editNote = gNotes.find(currNote => currNote.id === note.id)
-    editNote = {...editNote}
-    editNote.style = {...editNote.style} || {};
+    editNote = { ...editNote }
+    editNote.style = { ...editNote.style } || {};
     editNote.style.color = color;
-    gNotes = gNotes.map(note=> editNote.id === note.id ? editNote : note);
+    gNotes = gNotes.map(note => editNote.id === note.id ? editNote : note);
     storageService.store('gNotes', gNotes)
 
     return Promise.resolve(editNote)
-    
-} 
 
-function createNote(type, isPinned, info) {
+}
+
+function createNote(type, txt) {
     const note = {
         id: utils.getRandomId(),
         type,
         isPinned: false,
-        info
+        info: {
+            txtInput: txt
+        }
     }
     return note
 }
 
 function createNotes() { // consider creating a constructor for note 
     let notes = []
-    notes.push(createNote('NoteText', true, { txtInput: "This is AWESOME" }))
-    notes.push(createNote('NoteText', true, { txtInput: "This is AWESOME" }))
-    notes.push(createNote('NoteText', true, { txtInput: "This is AWESOME" }))
-    notes.push(createNote('NoteImage', true, { txtInput: "https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg" }))
+    notes.push(createNote('NoteText', "This is AWESOME"))
+    notes.push(createNote('NoteText', "This is AWESOME"))
+    notes.push(createNote('NoteText', "This is AWESOME"))
+    notes.push(createNote('NoteImage', "https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"))
 
     storageService.store('gNotes', notes)
     return notes
