@@ -5,8 +5,6 @@ export default class DynamicNotePrev extends React.Component {
         return DynamicPrevMap[this.props.note.type]
     }
 
-
-
     render() {
         const Cmp = this.getComponent();
         return <React.Fragment>

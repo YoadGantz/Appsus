@@ -54,3 +54,7 @@ a {
 .fixed {
     position: fixed;
 }
+
+.done{
+    text-decoration: line-through;
+}

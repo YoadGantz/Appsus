@@ -23,6 +23,16 @@ function getNotes(query) {
 }
 
 function addNote(noteType, noteInfo) {
+    if (noteType === 'NoteTodos') {
+        let todos = noteInfo.split(', ')
+        noteInfo = todos.map((todo) => {
+            return {
+                txtInput:todo,
+                isDone:false
+            }
+        })
+    }
+
     let newNote = createNote(noteType, noteInfo)
     gNotes = [...gNotes, newNote]
     storageService.store('gNotes', gNotes)
@@ -35,13 +45,13 @@ function deleteNote(note) {
     return Promise.resolve(gNotes)
 }
 
-function createNote(type, info) {
+function createNote(type, txt) {
     const note = {
         id: utils.getRandomId(),
         type,
         isPinned: false,
         info: {
-            txtInput: info
+            txtInput: txt
         }
     }
     return note

@@ -5,6 +5,7 @@ export default class AddNote extends React.Component {
     }
 
     updateNoteType = (ev) => {
+        console.log("updateNoteType",ev.target.value)
         let noteType = ev.target.value
         this.setState({ type: noteType })
     }
@@ -33,10 +34,10 @@ export default class AddNote extends React.Component {
             <label htmlFor="NoteText">
                 <img height="20px" src="../imgs/icons/txt.png"></img></label>
             <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteText" id="NoteText" />
-            {/* 
-            <label onChange={this.updateNoteType} htmlFor="toDo">
+
+            <label htmlFor="NoteTodos">
                 <img height="20px" src="../imgs/icons/toDo.png"></img></label>
-            <input name="inputType" type="radio" value="toDo" id="toDo"></input> */}
+            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteTodos" id="NoteTodos"></input>
 
             <label htmlFor="NoteImage">
                 <img height="20px" src="../imgs/icons/img.png"></img></label>
