@@ -3,7 +3,7 @@
 import storageService from '...../services/storageService.js'
 import utils from '...../services/utils.js'
 
-export default { getNotes, getNoteById, addNote, deleteNote }
+export default { getNotes, getNoteById, addNote, deleteNote, changeBGColor, changeColor }
 
 let gNotes = storageService.load('gNotes') || createNotes()
 
@@ -34,6 +34,30 @@ function deleteNote(note) {
     storageService.store('gNotes', gNotes)
     return Promise.resolve(gNotes)
 }
+
+function changeBGColor(note, color) {
+    let editNote = gNotes.find(currNote => currNote.id === note.id)
+    editNote = {...editNote}
+    editNote.style = {...editNote.style} || {};
+    editNote.style.backgroundColor = color;
+    gNotes = gNotes.map(note=> editNote.id === note.id ? editNote : note);
+    storageService.store('gNotes', gNotes)
+
+    return Promise.resolve(editNote)
+    
+}
+
+function changeColor(note, color) {
+    let editNote = gNotes.find(currNote => currNote.id === note.id)
+    editNote = {...editNote}
+    editNote.style = {...editNote.style} || {};
+    editNote.style.color = color;
+    gNotes = gNotes.map(note=> editNote.id === note.id ? editNote : note);
+    storageService.store('gNotes', gNotes)
+
+    return Promise.resolve(editNote)
+    
+} 
 
 function createNote(type, isPinned, info) {
     const note = {
