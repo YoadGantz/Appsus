@@ -5,7 +5,7 @@ import DynamicNotePrev from './DynamicNotePrev.jsx'
 export default class NoteList extends React.Component { //switch to function maybe 
     render() {
         return (
-            <ul>
+            <ul className="notes-container">
                 {this.props.notes.map(note =>
                     <DynamicNotePrev
                     key={note.id} 
