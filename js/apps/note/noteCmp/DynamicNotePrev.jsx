@@ -8,7 +8,12 @@ export default class DynamicNotePrev extends React.Component {
     render() {
         const Cmp = this.getComponent();
         return <React.Fragment>
-            <Cmp delete={this.props.delete} note={this.props.note}></Cmp>
+            <Cmp
+                onChangeBGColor={this.props.onChangeBGColor}
+                delete={this.props.delete}
+                onChangeColor={this.props.onChangeColor}
+                note={this.props.note}>
+            </Cmp>
         </React.Fragment>
     }
 }
