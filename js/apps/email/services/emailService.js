@@ -3,12 +3,21 @@
 import storageService from '...../services/storageService.js'
 import utils from '...../services/utils.js'
 
-export default { getEmails, getEmailById, deleteEmail, changeIsRead }
+export default { getEmails, getEmailById, deleteEmail, changeIsRead, sendEmail }
 
 let gEmails = storageService.load('gEmails') || createEmails()
 
 function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId)
+    return Promise.resolve(email)
+}
+
+function sendEmail(subject, body, isRead, sentAt) {
+    const email = createEmail(subject, body, isRead, sentAt);
+    console.log(email);
+    
+    gEmails.push(email)
+    storageService.store('gEmails', gEmails)
     return Promise.resolve(email)
 }
 
