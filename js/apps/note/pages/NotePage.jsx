@@ -14,9 +14,14 @@ export default class InboxPage extends React.Component {
     loadNotes = () => {
         noteService.getNotes(this.state.filterBy).then(notes => { this.setState({ notes }) })
     }
+
+    onAddNote = (note) => {
+       return noteService.addNote(note).then(newNote => { this.loadNotes()}) 
+    }
+
     render() {
         return <React.Fragment>
-            <AddNote></AddNote>
+            <AddNote onAddNote={this.onAddNote}></AddNote>
             <NoteList notes={this.state.notes}></NoteList>
         </React.Fragment>
     }
