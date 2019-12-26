@@ -1,13 +1,16 @@
-*{
+/* Base */
+* {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
-    background-color: aquamarine;
 }
+
 ul {
     margin: 0;
 }
+
 li {
     list-style-type: none;
 }
@@ -17,15 +20,26 @@ a {
     color: inherit;
 }
 
+/* Helpers */
 .active {
     color: white;
     background-color: blue;
 }
 
+/* Radio button hide Helper */
+
+#bgc, #font-color, #NoteText,#NoteTodos,#NoteImage,#NoteVideo {
+    display: none;
+}
+
+/* Main NavBar */
+
 .app-nav {
     background-color: red;
     height: 80px;
 }
+
+/* Email NavBar */
 
 .email-nav {
     background-color: khaki;
@@ -34,17 +48,9 @@ a {
     height: calc(100vh - 80px);
 }
 
-#bgc,#font-color {
-    display: none;
-}
-
 /* Layout */
 
-.not-read {
-    font-weight: bold;
-}
-
-/* Helpers */
+/* flex-helpers */
 
 .flex {
     display: flex;
@@ -54,10 +60,12 @@ a {
     flex-direction: column;
 }
 
-.fixed {
-    position: fixed;
+/* Email App  */
+.not-read {
+    font-weight: bold;
 }
 
-.done{
+/* Notes app */
+.done {
     text-decoration: line-through;
 }
