@@ -13,10 +13,9 @@ function getNoteById(noteId) {
 }
 
 function deleteNote(note) {
-    console.log(note);
-    gNotes = gEmails.filter((currNote) => currNote.id !== note.id)
+    gNotes = gNotes.filter((currNote) => currNote.id !== note.id)
     storageService.store('gNotes', gNotes)
-    return Promise.resolve(true)
+    return Promise.resolve(gNotes)
 }
 
 function getNotes(query) {

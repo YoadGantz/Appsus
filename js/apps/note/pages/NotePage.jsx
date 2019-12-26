@@ -11,13 +11,18 @@ export default class InboxPage extends React.Component {
         this.loadNotes();
     }
 
+    onDelete = (note) => {
+        noteService.deleteNote(note)
+        this.loadNotes();
+    }
+
     loadNotes = () => {
         noteService.getNotes(this.state.filterBy).then(notes => { this.setState({ notes }) })
     }
     render() {
         return <React.Fragment>
             <AddNote></AddNote>
-            <NoteList notes={this.state.notes}></NoteList>
+            <NoteList delete={this.onDelete} notes={this.state.notes}></NoteList>
         </React.Fragment>
     }
 }
