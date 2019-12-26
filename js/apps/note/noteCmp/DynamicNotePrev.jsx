@@ -1,6 +1,4 @@
-
 import DynamicPrevMap from "./DynamicPrevMap.js"
-import noteService from "../services/noteService.js";
 
 export default class DynamicNotePrev extends React.Component {
     getComponent() {
