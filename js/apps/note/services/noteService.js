@@ -27,8 +27,8 @@ function addNote(noteType, noteInfo) {
         let todos = noteInfo.split(', ')
         noteInfo = todos.map((todo) => {
             return {
-                txtInput:todo,
-                isDone:false
+                txtInput: todo,
+                isDone: false
             }
         })
     }
@@ -45,35 +45,31 @@ function deleteNote(note) {
     return Promise.resolve(gNotes)
 }
 
-<<<<<<< HEAD
-function createNote(type, txt) {
-=======
 function changeBGColor(note, color) {
     let editNote = gNotes.find(currNote => currNote.id === note.id)
-    editNote = {...editNote}
-    editNote.style = {...editNote.style} || {};
+    editNote = { ...editNote }
+    editNote.style = { ...editNote.style } || {};
     editNote.style.backgroundColor = color;
-    gNotes = gNotes.map(note=> editNote.id === note.id ? editNote : note);
+    gNotes = gNotes.map(note => editNote.id === note.id ? editNote : note);
     storageService.store('gNotes', gNotes)
 
     return Promise.resolve(editNote)
-    
+
 }
 
 function changeColor(note, color) {
     let editNote = gNotes.find(currNote => currNote.id === note.id)
-    editNote = {...editNote}
-    editNote.style = {...editNote.style} || {};
+    editNote = { ...editNote }
+    editNote.style = { ...editNote.style } || {};
     editNote.style.color = color;
-    gNotes = gNotes.map(note=> editNote.id === note.id ? editNote : note);
+    gNotes = gNotes.map(note => editNote.id === note.id ? editNote : note);
     storageService.store('gNotes', gNotes)
 
     return Promise.resolve(editNote)
-    
-} 
 
-function createNote(type, isPinned, info) {
->>>>>>> 957f84c31f3d1eab18fad0575ce13e45c9d9b611
+}
+
+function createNote(type, txt) {
     const note = {
         id: utils.getRandomId(),
         type,
