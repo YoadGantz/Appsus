@@ -16,6 +16,7 @@ export default class InboxPage extends React.Component {
     }
 
     onAddNote = (note) => {
+        console.log('final note before adding', note) // this is where the problem is.. arrives empty 
        return noteService.addNote(note).then(newNote => { this.loadNotes()}) 
     }
 

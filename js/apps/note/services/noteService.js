@@ -22,7 +22,8 @@ function getNotes(query) {
     return Promise.resolve(notes)
 }
 
-function addNote(newNote) {  
+function addNote(newNoteDetails) {
+    let newNote = createNote(newNoteDetails.type, newNoteDetails.isPinned, newNoteDetails.info)
     gNotes = [...gNotes, newNote]
     storageService.store('gNotes', gNotes)
     return Promise.resolve(newNote)
@@ -39,7 +40,7 @@ function createNote(type, isPinned, info) {
     const note = {
         id: utils.getRandomId(),
         type,
-        isPinned:false,
+        isPinned: false,
         info
     }
     return note
