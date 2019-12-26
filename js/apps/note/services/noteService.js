@@ -1,11 +1,16 @@
 'use strict'
 
+// import storageService from '../../services/storageService.js'
 import storageService from '...../services/storageService.js'
 import utils from '...../services/utils.js'
 
 export default { getNotes, getNoteById, addNote, deleteNote, changeBGColor, changeColor }
 
 let gNotes = storageService.load('gNotes') || createNotes()
+
+function saveNotes() {
+    storageService.store('gNotes', gNotes)
+}
 
 function getNoteById(noteId) {
     const note = gNotes.find(note => note.id === noteId)
@@ -35,13 +40,13 @@ function addNote(noteType, noteInfo) {
 
     let newNote = createNote(noteType, noteInfo)
     gNotes = [...gNotes, newNote]
-    storageService.store('gNotes', gNotes)
+    saveNotes()
     return Promise.resolve(newNote)
 }
 
 function deleteNote(note) {
     gNotes = gNotes.filter((currNote) => currNote.id !== note.id)
-    storageService.store('gNotes', gNotes)
+    saveNotes()
     return Promise.resolve(gNotes)
 }
 
@@ -51,10 +56,9 @@ function changeBGColor(note, color) {
     editNote.style = { ...editNote.style } || {};
     editNote.style.backgroundColor = color;
     gNotes = gNotes.map(note => editNote.id === note.id ? editNote : note);
-    storageService.store('gNotes', gNotes)
+    saveNotes()
 
     return Promise.resolve(editNote)
-
 }
 
 function changeColor(note, color) {
@@ -66,7 +70,6 @@ function changeColor(note, color) {
     storageService.store('gNotes', gNotes)
 
     return Promise.resolve(editNote)
-
 }
 
 function createNote(type, txt) {
@@ -78,7 +81,7 @@ function createNote(type, txt) {
             txtInput: txt
         }
     }
-    return note
+    return note;
 }
 
 function createNotes() { // consider creating a constructor for note 
