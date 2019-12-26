@@ -1,5 +1,5 @@
 import NotePage from "../apps/note/pages/NotePage.jsx";
-import NoteEdit from "../apps/note/pages/NoteEdit.jsx";
+import NoteEditPage from "../apps/note/pages/NoteEditPage.jsx";
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
@@ -12,7 +12,7 @@ export default class EmailApp extends React.Component {
             <Router history={history}>
                 <Switch>
                     <Route component={NotePage} path="/note" exact></Route>
-                    <Route component={NoteEdit} path="/note/edit/:id" exact></Route>
+                    <Route component={NoteEditPage} path="/note/edit/:id" exact></Route>
                 </Switch>
             </Router>
         </content>

@@ -32,14 +32,14 @@ export default class AddNote extends React.Component {
             {/* create another comp for the labels. */}
 
             <label htmlFor="NoteText">
-                <img height="20px" src="../imgs/icons/txt.png"/>
+                <img height="20px" src="../imgs/icons/txt.png" />
             </label>
-            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteText" id="NoteText"/>
+            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteText" id="NoteText" />
 
             <label htmlFor="NoteTodos">
-                <img height="20px" src="../imgs/icons/toDo.png"/>
+                <img height="20px" src="../imgs/icons/toDo.png" />
             </label>
-            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteTodos" id="NoteTodos"/>
+            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteTodos" id="NoteTodos" />
 
             <label htmlFor="NoteImage">
                 <img height="20px" src="../imgs/icons/img.png"/>

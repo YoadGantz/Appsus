@@ -4,7 +4,7 @@
 import storageService from '...../services/storageService.js'
 import utils from '...../services/utils.js'
 
-export default { getNotes, getNoteById, addNote, deleteNote, changeBGColor, changeColor }
+export default { query, getNoteById, addNote, deleteNote, changeBGColor, changeColor, editNote }
 
 let gNotes = storageService.load('gNotes') || createNotes()
 
@@ -17,13 +17,11 @@ function getNoteById(noteId) {
     return Promise.resolve(note)
 }
 
-function getNotes(query) {
-    const notes = [...gNotes]
-    // const emails = !query ? [...gEmails]
-    //     : gEmails.filter(email => {
-    //         return (book.title.includes(query.name) &&
-    //             (book.listPrice.amount > query.priceFrom) && (book.listPrice.amount < query.priceTo))
-    //     });
+function query(query) {
+    const notes = !query ?[...gNotes] : 
+        gNotes.filter(note => {
+            return (note.info.txtInput.includes(query))
+        });
     return Promise.resolve(notes)
 }
 
@@ -54,6 +52,18 @@ function deleteNote(note) {
     gNotes = gNotes.filter((currNote) => currNote.id !== note.id)
     saveNotes()
     return Promise.resolve(gNotes)
+}
+
+function editNote(id, title, input) {
+    console.log(id, title, input);
+    let note = gNotes.find(note => note.id === id)
+    note = { ...note }
+    note.info.title = title
+    note.info.txtInput = input
+    gNotes = gNotes.map(currNote => currNote.id === note.id ? note : currNote)
+    saveNotes()
+
+    return Promise.resolve(note);
 }
 
 function changeBGColor(note, color) {

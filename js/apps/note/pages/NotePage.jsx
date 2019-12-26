@@ -1,10 +1,12 @@
 import noteService from "../services/noteService.js";
 import AddNote from "../noteCmp/AddNote.jsx";
 import NoteList from "../noteCmp/NoteList.jsx";
+import Search from "../../apps cmps/Search.jsx";
 
 export default class InboxPage extends React.Component {
     state = {
-        notes: []
+        notes: [],
+        filterBy: ''
     }
 
     componentDidMount() {
@@ -26,23 +28,29 @@ export default class InboxPage extends React.Component {
     }
 
     loadNotes = () => {
-        noteService.getNotes(this.state.filterBy).then(notes => { this.setState({ notes }) })
+        console.log(this.state.filterBy);
+        
+        noteService.query(this.state.filterBy).then(notes => { this.setState({ notes }) })
     }
 
-    onAddNote = (noteType,noteInfo) => {
-       return noteService.addNote(noteType,noteInfo).then(newNote => { this.loadNotes()}) 
+    onAddNote = (noteType, noteInfo) => {
+        return noteService.addNote(noteType, noteInfo).then(newNote => { this.loadNotes() })
 
+    }
+
+    handleChange = (changeFilter) =>{
+        this.setState({filterBy : changeFilter}, this.loadNotes)
     }
 
     render() {
         return <React.Fragment>
+            <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
             <AddNote onAddNote={this.onAddNote}></AddNote>
             <NoteList
                 onChangeColor={this.onChangeColor}
                 onChangeBGColor={this.onChangeBGColor}
                 delete={this.onDelete}
                 notes={this.state.notes}>
-
             </NoteList>
 
         </React.Fragment>
