@@ -12,8 +12,7 @@ export default class InboxPage extends React.Component {
     }
 
     onDelete = (note) => {
-        noteService.deleteNote(note)
-        this.loadNotes();
+        noteService.deleteNote(note).then(this.loadNotes);
     }
 
     onChangeBGColor = (note, color) => {
