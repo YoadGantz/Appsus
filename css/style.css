@@ -61,8 +61,13 @@ a {
 }
 
 /* Email App  */
+.read{
+    margin-block-end: 20px;
+}
+
 .not-read {
     font-weight: bold;
+    margin-block-end: 20px;
 }
 
 /* Notes app */
