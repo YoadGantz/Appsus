@@ -17,6 +17,10 @@ export default class InboxPage extends React.Component {
         noteService.deleteNote(note).then(this.loadNotes);
     }
 
+    onTogglePin = (note) => {
+        noteService.togglePin(note).then(this.loadNotes)
+    }
+
     onChangeBGColor = (note, color) => {
         noteService.changeBGColor(note, color).then(this.loadNotes)
     }
@@ -42,6 +46,7 @@ export default class InboxPage extends React.Component {
             <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
             <AddNote onAddNote={this.onAddNote}></AddNote>
             <NoteList
+                togglePin={this.onTogglePin}
                 onChangeColor={this.onChangeColor}
                 onChangeBGColor={this.onChangeBGColor}
                 delete={this.onDelete}

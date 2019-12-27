@@ -4,6 +4,7 @@ export default class NoteEditControl extends React.Component {
     render() {
         const note = this.props.note
         return <React.Fragment>
+            <button onClick={() => this.props.togglePin(note)}>Toggle Pin</button>
             <label><img height="25px" src="../../../../imgs/icons/paint.svg" />
                 <input onChange={(ev) => {
                     this.props.onChangeBGColor(note, ev.target.value)
