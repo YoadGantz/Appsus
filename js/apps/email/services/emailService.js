@@ -27,10 +27,19 @@ function deleteEmail(email) {
     return Promise.resolve(true)
 }
 
-function query(query) {
-    const emails = !query ? [...gEmails]
+function query(filterBy, filterStatus) {
+    console.log(filterBy, filterStatus);
+    
+    const emails = (!filterBy && filterStatus === 'isAll') ? [...gEmails]
         : gEmails.filter(email => {
-            return (email.subject.includes(query) || email.body.includes(query))
+                if (filterStatus === 'isAll') {
+                return (email.subject.includes(filterBy) || email.body.includes(filterBy))
+            }
+            else if (filterStatus === 'isRead') {
+                return (email.isRead && (email.subject.includes(filterBy) || email.body.includes(filterBy)))
+            } else {
+                return (!email.isRead && (email.subject.includes(filterBy) || email.body.includes(filterBy)))
+            }
         });
     return Promise.resolve(emails)
 }
