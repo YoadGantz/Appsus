@@ -19,7 +19,7 @@ export default class NoteText extends React.Component {
                 onChangeBGColor={this.props.onChangeBGColor}
                 onChangeColor={this.props.onChangeColor}
             ></NoteEditControl>
-            <img onClick={this.onCreateEmail} height="25px" src="../imgs/icons/email.svg" />
+            <img title="create an Email"onClick={this.onCreateEmail} height="25px" src="../imgs/icons/email.svg" />
         </li>
     }
 }
