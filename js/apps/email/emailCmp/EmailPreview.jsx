@@ -2,7 +2,7 @@
 const { Link } = ReactRouterDOM
 export default class EmailPreview extends React.Component {
     onSelect = () => {
-        this.props.addToSelected(this.props.email.id)
+        this.props.addToSelected(this.props.email)
     }
 
     render() {

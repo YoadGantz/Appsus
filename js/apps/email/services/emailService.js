@@ -3,10 +3,9 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { query, getEmailById, deleteEmail, changeReadStatus, getUnReadCount, sendEmail, addToSelected }
+export default { query, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, toggleSelection, updateIsReadSelected, unSelectAll }
 
 let gEmails = storageService.load('gEmails') || createEmails()
-let gSelectedEmailsIds = []
 
 function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId)
@@ -77,12 +76,13 @@ function createEmail(subject, body, isRead, sentAt) {
         subject,
         body,
         isRead,
+        isSelected: false,
         sentAt
     }
     return email
 }
 
-function changeReadStatus(email) {//we can use get email by id instead.. no real use for this func... 
+function changeIsRead(email) {
     gEmails = gEmails.map(currEmail => {
         if (email.id === currEmail.id) currEmail.isRead = true;
         return currEmail;
@@ -91,16 +91,37 @@ function changeReadStatus(email) {//we can use get email by id instead.. no real
     return Promise.resolve(true);
 }
 
-function addToSelected(emailId) {
-    if (!gSelectedEmailsIds.includes(emailId)) {
-        gSelectedEmailsIds.push(emailId)
+function toggleSelection(email) {
+    email.isSelected = !email.isSelected
+    let hasSelectedUnRead = checkHasSelectedUnRead()
+    return Promise.resolve(hasSelectedUnRead)
+}
+function checkHasSelectedUnRead() {
+    return gEmails.some((email) => { return email.isSelected && !email.isRead })
+}
+
+function updateIsReadSelected() {
+    if (checkHasSelectedUnRead()) {
+        gEmails = gEmails.map((email) => {
+            if (email.isSelected) email.isRead = true
+            return email
+        })
     } else {
-        let currEmailIdx = gSelectedEmailsIds.findIndex((currEmailIdx) => { currEmailIdx === emailId })
-        gSelectedEmailsIds.splice(currEmailIdx, 1)
-        console.log(currEmailIdx)
+        gEmails = gEmails.map((email) => {
+            if (email.isSelected && email.isRead) email.isRead = false
+            return email
+        })
     }
-    console.log(gSelectedEmailsIds)
-    console.log(gSelectedEmailsIds.includes(emailId))
+    saveEmails()
+    return Promise.resolve()
+}
+
+function unSelectAll() {
+    gEmails = gEmails.map((email) => {
+        email.isSelected = false
+        return email
+    })
+    saveEmails()
 }
 
 function createEmails() {
