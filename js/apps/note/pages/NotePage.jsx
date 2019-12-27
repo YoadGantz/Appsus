@@ -59,7 +59,6 @@ export default class InboxPage extends React.Component {
     }
 
     onCreateEmail = (emailBody) => {
-        console.log(emailBody)
         this.props.history.push(`/email/compose?note=${emailBody}`)
     }
 
