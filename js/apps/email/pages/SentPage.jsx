@@ -33,6 +33,12 @@ export default class SentPage extends React.Component {
     loadEmails = () => {
         emailService.query(this.state.filterBy, this.state.filterStatus, this.state.sortBy).then(emails => { this.setState({ emails }) })
     }
+
+    goToDetails = (emailId) => {
+        console.log(emailId)
+        this.props.history.push(`/email/${emailId}`)
+    }
+
     render() {
         return <main>
             <div className="settings-container">
@@ -40,7 +46,10 @@ export default class SentPage extends React.Component {
                 <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
                 <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
             </div>
-            <EmailList emails={this.state.emails}></EmailList>
+            <EmailList 
+            goToDetails={this.goToDetails}
+            emails={this.state.emails}>
+            </EmailList>
         </main>
     }
 }

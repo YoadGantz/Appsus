@@ -16,13 +16,13 @@ export default class LongTxt extends React.Component {
     }
 
     getButtonTxt(){
-        return this.state.isLongTxtShown ? 'read less' : 'read more'
+        return this.state.isLongTxtShown && <img onClick = {this.props.onExpand} height="20px" src="../../imgs/icons/expand.svg"/>
     }
 
     render() {
         return (
             <span className="read-more" onClick={this.handleReadMore}>{this.getText()}
-            { this.props.text.length >= this.props.shortLength && <div className="read-more-button">{this.getButtonTxt()}</div>}
+            { this.props.text.length >= this.props.shortLength && <span className="read-more-button">{this.getButtonTxt()}</span>}
             </span>
         )
     }

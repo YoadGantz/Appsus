@@ -87,6 +87,11 @@ export default class InboxPage extends React.Component {
             .then(this.loadEmails())
     }
 
+    goToDetails = (emailId) => {
+        console.log(emailId)
+        this.props.history.push(`/email/${emailId}`)
+    }
+
     render() {
         return <main>
             <div className="settings-container">
@@ -95,11 +100,18 @@ export default class InboxPage extends React.Component {
                 <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
                 <ReadStatusSelection selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusSelection>
             </div>
-            <DeleteSelection deleteSelected={this.deleteSelected}></DeleteSelection>
+            <DeleteSelection 
+                deleteSelected={this.deleteSelected}>
+            </DeleteSelection>
             <AddStarSelection
-                selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}></AddStarSelection>
-            <EmailList toggleStarred={this.toggleStarred}
-                toggleSelection={this.toggleSelection} emails={this.state.emails}></EmailList>
+                selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}>
+            </AddStarSelection>
+            <EmailList 
+                goToDetails={this.goToDetails} 
+                toggleStarred={this.toggleStarred}
+                toggleSelection={this.toggleSelection}
+                emails={this.state.emails}>
+            </EmailList>
         </main>
     }
 }
