@@ -1,4 +1,4 @@
-export default class ReadStatusEmail extends React.Component {
+export default class ReadStatusSelection extends React.Component {
 
     updateSelected = () => {
         this.props.updateIsReadSelected()

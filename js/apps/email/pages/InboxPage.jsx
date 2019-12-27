@@ -3,8 +3,8 @@ import EmailList from "../emailCmp/EmailList.jsx";
 import Search from "../../apps cmps/Search.jsx";
 import FilterEmail from "../emailCmp/FilterEmail.jsx";
 import SortEmail from "../emailCmp/SortEmail.jsx";
-import ReadStatusEmail from "../emailCmp/ReadStatusEmail.jsx";
-import AddStarEmail from "../emailCmp/AddStarEmail.jsx";
+import ReadStatusSelection from "../emailCmp/ReadStatusEmail.jsx";
+import AddStarSelection from "../emailCmp/AddStarEmail.jsx";
 import DeleteSelection from "../emailCmp/DeleteSelection.jsx";
 
 export default class InboxPage extends React.Component {
@@ -93,11 +93,11 @@ export default class InboxPage extends React.Component {
                 <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
                 <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
                 <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
-                <ReadStatusEmail selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
+                <ReadStatusSelection selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusSelection>
             </div>
             <DeleteSelection deleteSelected={this.deleteSelected}></DeleteSelection>
-            <AddStarEmail
-                selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}></AddStarEmail>
+            <AddStarSelection
+                selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}></AddStarSelection>
             <EmailList toggleStarred={this.toggleStarred}
                 toggleSelection={this.toggleSelection} emails={this.state.emails}></EmailList>
         </main>

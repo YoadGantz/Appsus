@@ -1,4 +1,4 @@
-export default class AddStarEmail extends React.Component {
+export default class AddStarSelection extends React.Component {
 
     updateSelected = () => {
         this.props.updateIsStarredSelected()
