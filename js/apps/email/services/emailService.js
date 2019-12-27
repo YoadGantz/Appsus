@@ -3,7 +3,7 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { query, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, toggleSelection, updateIsReadSelected, unSelectAll }
+export default { query, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, toggleSelection, updateIsReadSelected, unSelectAll, toggleStarred, updateIsStarredSelected }
 
 let gEmails = storageService.load('gEmails') || createEmails()
 
@@ -77,6 +77,7 @@ function createEmail(subject, body, isRead, sentAt) {
         body,
         isRead,
         isSelected: false,
+        isStarred: false,
         sentAt
     }
     return email
@@ -93,15 +94,19 @@ function changeIsRead(email) {
 
 function toggleSelection(email) {
     email.isSelected = !email.isSelected
-    let hasSelectedUnRead = checkHasSelectedUnRead()
-    return Promise.resolve(hasSelectedUnRead)
+    let selected = {
+        selectedUnRead: checkSelectedUnRead(),
+        selectedUnStar: checkSelectedUnStar()
+    }
+    return Promise.resolve(selected)
 }
-function checkHasSelectedUnRead() {
+
+function checkSelectedUnRead() {
     return gEmails.some((email) => { return email.isSelected && !email.isRead })
 }
 
 function updateIsReadSelected() {
-    if (checkHasSelectedUnRead()) {
+    if (checkSelectedUnRead()) {
         gEmails = gEmails.map((email) => {
             if (email.isSelected) email.isRead = true
             return email
@@ -113,7 +118,7 @@ function updateIsReadSelected() {
         })
     }
     saveEmails()
-    return Promise.resolve()
+    return Promise.resolve(checkSelectedUnRead())
 }
 
 function unSelectAll() {
@@ -122,6 +127,34 @@ function unSelectAll() {
         return email
     })
     saveEmails()
+    return Promise.resolve(true)
+}
+// starred 
+
+function toggleStarred(email) {
+    email.isStarred = !email.isStarred
+    let selectedUnStar = checkSelectedUnStar()
+    return Promise.resolve(selectedUnStar)
+}
+
+function checkSelectedUnStar() {
+    return gEmails.some((email) => { return email.isSelected && !email.isStarred })
+}
+
+function updateIsStarredSelected() {
+    if (checkSelectedUnStar()) {
+        gEmails = gEmails.map((email) => {
+            if (email.isSelected) email.isStarred = true
+            return email
+        })
+    } else {
+        gEmails = gEmails.map((email) => {
+            if (email.isSelected && email.isStarred) email.isStarred = false
+            return email
+        })
+    }
+    saveEmails()
+    return Promise.resolve(checkSelectedUnStar())
 }
 
 function createEmails() {

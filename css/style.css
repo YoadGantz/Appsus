@@ -70,6 +70,10 @@ a {
     margin-block-end: 20px;
 }
 
+.star{
+    background-color: rgb(255, 255, 0);
+}
+
 /* Notes app */
 .done {
     text-decoration: line-through;

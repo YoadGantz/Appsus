@@ -18,14 +18,10 @@ export default class SentPage extends React.Component {
 
 
     handleChange = (changeFilter) => {
-        console.log(changeFilter);
-
         this.setState({ filterBy: changeFilter }, this.loadEmails)
     }
 
     handleStatusChange = (changeFilter) => {
-        console.log(changeFilter);
-
         this.setState({ filterStatus: changeFilter }, this.loadEmails)
     }
 

@@ -4,6 +4,7 @@ import Search from "../../apps cmps/Search.jsx";
 import FilterEmail from "../emailCmp/FilterEmail.jsx";
 import SortEmail from "../emailCmp/SortEmail.jsx";
 import ReadStatusEmail from "../emailCmp/ReadStatusEmail.jsx";
+import AddStarEmail from "../emailCmp/AddStarEmail.jsx";
 
 
 export default class InboxPage extends React.Component {
@@ -12,16 +13,15 @@ export default class InboxPage extends React.Component {
         filterBy: '',
         filterStatus: 'isAll',
         sortBy: 'date',
-        hasSelectedUnRead:false
+        selectedUnRead: false,
+        selectedUnStar: false
     }
 
     componentDidMount() {
-        emailService.unSelectAll()
-        this.getUnReadCount()
-        this.loadEmails();
-    }
-
-    componentWillUnMount() {
+        emailService.unSelectAll().then(() => {
+            this.getUnReadCount()
+            this.loadEmails()
+        })
     }
 
     loadEmails = () => {
@@ -46,8 +46,12 @@ export default class InboxPage extends React.Component {
 
     toggleSelection = (email) => {
         emailService.toggleSelection(email)
-            .then((hasSelectedUnRead) => {
-                this.setState({hasSelectedUnRead})
+            .then((selected) => {
+                this.setState({
+                    selectedUnRead: selected.selectedUnRead,
+                    selectedUnStar: selected.selectedUnStar
+                }
+                )
                 this.loadEmails()
             }
             )
@@ -55,7 +59,28 @@ export default class InboxPage extends React.Component {
 
     updateIsReadSelected = () => {
         emailService.updateIsReadSelected()
-            .then(this.loadEmails())
+            .then((selectedUnRead) => {
+                this.setState({ selectedUnRead })
+                this.loadEmails()
+            })
+    }
+
+    toggleStarred = (email) => {
+        emailService.toggleStarred(email)
+            .then((selectedUnStar) => {
+                this.setState({ selectedUnStar })
+                this.loadEmails()
+            }
+            )
+    }
+
+    updateIsStarredSelected = () => {
+        emailService.updateIsStarredSelected()
+            .then((selectedUnStar) => {
+                this.setState({ selectedUnStar })
+                this.loadEmails()
+            }
+            )
     }
 
     render() {
@@ -63,8 +88,11 @@ export default class InboxPage extends React.Component {
             <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
             <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
             <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
-            <ReadStatusEmail hasSelectedUnRead = {this.state.hasSelectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
-            <EmailList addToSelected={this.toggleSelection} emails={this.state.emails}></EmailList>
+            <ReadStatusEmail selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
+            <AddStarEmail
+                selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}></AddStarEmail>
+            <EmailList toggleStarred={this.toggleStarred}
+                toggleSelection={this.toggleSelection} emails={this.state.emails}></EmailList>
         </React.Fragment>
     }
 }
