@@ -1,19 +1,48 @@
 import emailService from "../services/emailService.js";
 import EmailList from "../emailCmp/EmailList.jsx";
+import Search from "../../apps cmps/Search.jsx";
+import FilterEmail from "../emailCmp/FilterEmail.jsx";
+import SortEmail from "../emailCmp/SortEmail.jsx";
 
 export default class SentPage extends React.Component {
     state = {
-        emails: []
+        emails: [],
+        filterBy: '',
+        filterStatus: 'isAll',
+        sortBy: 'date'
     }
 
     componentDidMount() {
         this.loadEmails();
     }
 
+
+    handleChange = (changeFilter) => {
+        console.log(changeFilter);
+
+        this.setState({ filterBy: changeFilter }, this.loadEmails)
+    }
+
+    handleStatusChange = (changeFilter) => {
+        console.log(changeFilter);
+
+        this.setState({ filterStatus: changeFilter }, this.loadEmails)
+    }
+
+    handleSortChange = (changeSort) => {
+        this.setState({ sortBy: changeSort}, this.loadEmails)
+    }
+
+
     loadEmails = () => {
-        emailService.getEmails(this.state.filterBy).then(emails => { this.setState({ emails }) })
+        emailService.query(this.state.filterBy, this.state.filterStatus, this.state.sortBy).then(emails => { this.setState({ emails }) })
     }
     render() {
-        return <EmailList emails={this.state.emails}></EmailList>
+        return <React.Fragment>
+            <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
+            <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
+            <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
+            <EmailList emails={this.state.emails}></EmailList>
+        </React.Fragment>
     }
 }

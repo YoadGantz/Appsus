@@ -3,7 +3,7 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { getEmails, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, addToSelected }
+export default { query, getEmailById, deleteEmail, changeReadStatus, getUnReadCount, sendEmail, addToSelected }
 
 let gEmails = storageService.load('gEmails') || createEmails()
 let gSelectedEmailsIds = []
@@ -15,27 +15,48 @@ function getEmailById(emailId) {
 
 function sendEmail(subject, body, isRead, sentAt) {
     const email = createEmail(subject, body, isRead, sentAt);
-    console.log(email);
-
     gEmails.push(email)
-    storageService.store('gEmails', gEmails)
+    saveEmails()
     return Promise.resolve(email)
 }
 
 function deleteEmail(email) {
     gEmails = gEmails.filter((currEmail) => currEmail.id !== email.id)
-    storageService.store('gEmails', gEmails)
+    saveEmails()
     return Promise.resolve(true)
 }
 
-function getEmails(query) {
-    const emails = [...gEmails]
-    // const emails = !query ? [...gEmails]
-    //     : gEmails.filter(email => {
-    //         return (book.title.includes(query.name) &&
-    //             (book.listPrice.amount > query.priceFrom) && (book.listPrice.amount < query.priceTo))
-    //     });
+function query(filterBy, filterStatus, sortBy) {
+    const emails = (!filterBy && filterStatus === 'isAll') ? [...gEmails]
+        : gEmails.filter(email => {
+            if (filterStatus === 'isAll') {
+                return (email.subject.includes(filterBy) || email.body.includes(filterBy))
+            }
+            else if (filterStatus === 'isRead') {
+                return (email.isRead && (email.subject.includes(filterBy) || email.body.includes(filterBy)))
+            } else {
+                return (!email.isRead && (email.subject.includes(filterBy) || email.body.includes(filterBy)))
+            }
+        });
+    if (sortBy === 'subject') emails.sort(sortBySubject)
+    else emails.sort(sortByDate)
     return Promise.resolve(emails)
+}
+
+function sortByDate(email1, email2) {
+    return email1.sentAt - email2.sentAt
+}
+
+function sortBySubject(email1, email2) {
+    const subject1 = email1.subject.toUpperCase();
+    const subject2 = email2.subject.toUpperCase();
+    if (subject1 < subject2) {
+        return -1;
+    }
+    if (subject1 > subject2) {
+        return 1;
+    }
+    return 0;
 }
 
 function getUnReadCount() {
@@ -44,6 +65,10 @@ function getUnReadCount() {
         return count
     }, 0);
     return Promise.resolve(unReadCount)
+}
+
+function saveEmails() {
+    storageService.store('gEmails', gEmails)
 }
 
 function createEmail(subject, body, isRead, sentAt) {
@@ -57,11 +82,12 @@ function createEmail(subject, body, isRead, sentAt) {
     return email
 }
 
-function changeIsRead(email) {
+function changeReadStatus(email) {//we can use get email by id instead.. no real use for this func... 
     gEmails = gEmails.map(currEmail => {
         if (email.id === currEmail.id) currEmail.isRead = true;
         return currEmail;
     })
+    saveEmails()
     return Promise.resolve(true);
 }
 
