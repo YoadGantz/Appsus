@@ -9,8 +9,11 @@ export default class NoteTodos extends React.Component {
 
     render() {
         let todos = this.props.note.info.txtInput
+        let style = this.props.note.style || 'none';
+        let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
+        let color = style.color || 'black';
         return <React.Fragment>
-            <li>
+            <li style={{ backgroundColor: bgc, color: color }}>
                 <ul>{todos.map((todo, i) => {
 
                     return <li className={(todo.isDone ? 'done' : '')} key={i}>{todo.txtInput}
