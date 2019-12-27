@@ -3,7 +3,7 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { getEmails, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail}
+export default { query, getEmailById, deleteEmail, changeReadStatus: changeReadStatus, getUnReadCount, sendEmail }
 
 let gEmails = storageService.load('gEmails') || createEmails()
 
@@ -15,25 +15,23 @@ function getEmailById(emailId) {
 function sendEmail(subject, body, isRead, sentAt) {
     const email = createEmail(subject, body, isRead, sentAt);
     console.log(email);
-    
+
     gEmails.push(email)
-    storageService.store('gEmails', gEmails)
+    saveEmails()
     return Promise.resolve(email)
 }
 
 function deleteEmail(email) {
     gEmails = gEmails.filter((currEmail) => currEmail.id !== email.id)
-    storageService.store('gEmails', gEmails)
+    saveEmails()
     return Promise.resolve(true)
 }
 
-function getEmails(query) {
-    const emails = [...gEmails]
-    // const emails = !query ? [...gEmails]
-    //     : gEmails.filter(email => {
-    //         return (book.title.includes(query.name) &&
-    //             (book.listPrice.amount > query.priceFrom) && (book.listPrice.amount < query.priceTo))
-    //     });
+function query(query) {
+    const emails = !query ? [...gEmails]
+        : gEmails.filter(email => {
+            return (email.subject.includes(query) || email.body.includes(query))
+        });
     return Promise.resolve(emails)
 }
 
@@ -41,8 +39,12 @@ function getUnReadCount() {
     let unReadCount = gEmails.reduce(function (count, email) {
         if (!email.isRead) count++
         return count
-    },0);
+    }, 0);
     return Promise.resolve(unReadCount)
+}
+
+function saveEmails() {
+    storageService.store('gEmails', gEmails)
 }
 
 function createEmail(subject, body, isRead, sentAt) {
@@ -56,11 +58,12 @@ function createEmail(subject, body, isRead, sentAt) {
     return email
 }
 
-function changeIsRead(email) {//we can use get email by id instead.. no real use for this func... 
+function changeReadStatus(email) {//we can use get email by id instead.. no real use for this func... 
     gEmails = gEmails.map(currEmail => {
         if (email.id === currEmail.id) currEmail.isRead = true;
         return currEmail;
     })
+    saveEmails()
     return Promise.resolve(true);
 }
 
