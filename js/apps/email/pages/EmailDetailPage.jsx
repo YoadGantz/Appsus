@@ -40,7 +40,7 @@ export default class EmailDetailPage extends React.Component {
         if (!this.state.email) return <div className="loading"> Loading...</div>
         return <React.Fragment>
             <EmailDetail email={this.state.email} delete={() => this.onDelete(this.state.email)} goBack={this.goBack}></EmailDetail>
-            <Link to={{pathname:"/email/compose", state:this.state.email}}>Reply</Link>
+            <Link to={{ pathname: "/email/compose", state: this.state.email }}>Reply</Link>
         </React.Fragment>
     }
 }

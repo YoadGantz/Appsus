@@ -59,7 +59,7 @@ function editNote(id, title, input) {
     note.info.txtInput = input
     gNotes = gNotes.map(currNote => currNote.id === note.id ? note : currNote)
     saveNotes()
-    
+
     return Promise.resolve(note);
 }
 
@@ -67,7 +67,7 @@ function togglePin(note) {
     let editNote = gNotes.find(currNote => {
         return currNote.id === note.id
     })
-    editNote = {...editNote}
+    editNote = { ...editNote }
     editNote.isPinned = !editNote.isPinned
     gNotes = gNotes.map(note => note.id === editNote.id ? editNote : note)
     saveNotes()

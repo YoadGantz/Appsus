@@ -26,7 +26,7 @@ export default class SentPage extends React.Component {
     }
 
     handleSortChange = (changeSort) => {
-        this.setState({ sortBy: changeSort}, this.loadEmails)
+        this.setState({ sortBy: changeSort }, this.loadEmails)
     }
 
 
