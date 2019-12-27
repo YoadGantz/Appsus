@@ -3,7 +3,7 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { query, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, toggleSelection, updateIsReadSelected, unSelectAll, toggleStarred, updateIsStarredSelected }
+export default { query, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, toggleSelection, updateIsReadSelected, unSelectAll, toggleStarred, updateIsStarredSelected, deleteSelected }
 
 let gEmails = storageService.load('gEmails') || createEmails()
 
@@ -155,6 +155,12 @@ function updateIsStarredSelected() {
     }
     saveEmails()
     return Promise.resolve(checkSelectedUnStar())
+}
+
+function deleteSelected() {
+    gEmails = gEmails.filter((email) => { return (!email.isSelected) })
+    saveEmails();
+    return Promise.resolve(true)
 }
 
 function createEmails() {

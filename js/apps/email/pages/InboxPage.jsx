@@ -82,6 +82,11 @@ export default class InboxPage extends React.Component {
             )
     }
 
+    deleteSelected = () => {
+        emailService.deleteSelected()
+            .then(this.loadEmails())
+    }
+
     render() {
         return <main>
             <div className="settings-container">
@@ -90,7 +95,7 @@ export default class InboxPage extends React.Component {
                 <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
                 <ReadStatusEmail selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
             </div>
-            <DeleteSelection></DeleteSelection>
+            <DeleteSelection deleteSelected={this.deleteSelected}></DeleteSelection>
             <AddStarEmail
                 selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}></AddStarEmail>
             <EmailList toggleStarred={this.toggleStarred}
