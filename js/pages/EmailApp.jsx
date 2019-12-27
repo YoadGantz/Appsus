@@ -2,6 +2,7 @@ import InboxPage from "../apps/email/pages/InboxPage.jsx";
 import SentPage from "../apps/email/pages/SentPage.jsx";
 import EmailDetailPage from "../apps/email/pages/EmailDetailPage.jsx";
 import EmailNavBar from "../apps/email/emailCmp/EmailNavBar.jsx"
+import ComposeEmail from "../apps/email/pages/ComposeEmail.jsx";
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
@@ -22,6 +23,7 @@ export default class EmailApp extends React.Component {
             <Router history={history}>
                 <EmailNavBar unReadCount={this.state.unReadCount}></EmailNavBar>
                 <Switch>
+                    <Route component={ComposeEmail} path="/email/compose"></Route>
                     <Route render={(props) => <InboxPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/inbox" exact></Route>
                     <Route component={SentPage} path="/email/sent"></Route>
                     <Route render={(props) => <EmailDetailPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/:id" exact></Route>
