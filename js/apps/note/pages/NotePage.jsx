@@ -2,6 +2,7 @@ import noteService from "../services/noteService.js";
 import AddNote from "../noteCmp/AddNote.jsx";
 import NoteList from "../noteCmp/NoteList.jsx";
 import Search from "../../apps cmps/Search.jsx";
+import eventBusService from "../../services/eventBusService.js";
 
 export default class InboxPage extends React.Component {
     state = {
@@ -14,7 +15,14 @@ export default class InboxPage extends React.Component {
     }
 
     onDelete = (note) => {
-        noteService.deleteNote(note).then(this.loadNotes);
+        noteService.deleteNote(note).then(() => {
+            eventBusService.emit('delete')
+            this.loadNotes()
+        });
+    }
+
+    onTogglePin = (note) => {
+        noteService.togglePin(note).then(this.loadNotes)
     }
 
     onChangeBGColor = (note, color) => {
@@ -30,7 +38,10 @@ export default class InboxPage extends React.Component {
     }
 
     onAddNote = (noteType, noteInfo) => {
-        return noteService.addNote(noteType, noteInfo).then(newNote => { this.loadNotes() })
+        return noteService.addNote(noteType, noteInfo).then(newNote => { 
+            eventBusService.emit('addNote')
+            this.loadNotes() 
+        })
     }
 
     handleChange = (changeFilter) => {
@@ -42,6 +53,7 @@ export default class InboxPage extends React.Component {
             <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
             <AddNote onAddNote={this.onAddNote}></AddNote>
             <NoteList
+                togglePin={this.onTogglePin}
                 onChangeColor={this.onChangeColor}
                 onChangeBGColor={this.onChangeBGColor}
                 delete={this.onDelete}

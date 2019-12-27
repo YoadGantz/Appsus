@@ -26,7 +26,7 @@ export default class SentPage extends React.Component {
     }
 
     handleSortChange = (changeSort) => {
-        this.setState({ sortBy: changeSort}, this.loadEmails)
+        this.setState({ sortBy: changeSort }, this.loadEmails)
     }
 
 
@@ -34,11 +34,13 @@ export default class SentPage extends React.Component {
         emailService.query(this.state.filterBy, this.state.filterStatus, this.state.sortBy).then(emails => { this.setState({ emails }) })
     }
     render() {
-        return <React.Fragment>
-            <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
-            <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
-            <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
+        return <main>
+            <div className="settings-container">
+                <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
+                <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
+                <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
+            </div>
             <EmailList emails={this.state.emails}></EmailList>
-        </React.Fragment>
+        </main>
     }
 }

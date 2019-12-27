@@ -9,6 +9,7 @@ export default class NoteText extends React.Component {
         return <li style={{ backgroundColor: bgc, color: color }}>
             {this.props.note.info.txtInput}
             <NoteEditControl
+                togglePin={this.props.togglePin}
                 delete={this.props.delete}
                 note={this.props.note}
                 onChangeBGColor={this.props.onChangeBGColor}

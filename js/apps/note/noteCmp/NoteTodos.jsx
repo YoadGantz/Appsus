@@ -21,6 +21,7 @@ export default class NoteTodos extends React.Component {
                 </ul>
             </li>
             <NoteEditControl
+                togglePin={this.props.togglePin}
                 delete={this.props.delete}
                 note={this.props.note}
                 onChangeBGColor={this.props.onChangeBGColor}

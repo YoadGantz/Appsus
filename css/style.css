@@ -9,15 +9,35 @@ body {
 
 ul {
     margin: 0;
+    padding: 20px;
 }
 
 li {
     list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.inbox > * {
+    display: flex;
+    justify-content: space-between;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+}
+
+section {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+main {
+    overflow-y: auto;
+}
+
+.content-container {
+    height: 100vh;
 }
 
 /* Helpers */
@@ -36,17 +56,17 @@ a {
 
 .app-nav {
     background-color: red;
-    height: 80px;
+    flex: 0 0 60px;
 }
 
 /* Email NavBar */
 
 .email-nav {
     background-color: khaki;
-    top: 80px;
-    width: 100px;
-    height: calc(100vh - 80px);
+    flex: 0 0 150px;
 }
+
+
 
 /* Layout */
 

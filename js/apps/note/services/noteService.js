@@ -2,7 +2,7 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { query, getNoteById, addNote, deleteNote, changeBGColor, changeColor, editNote }
+export default { query, getNoteById, addNote, deleteNote, changeBGColor, changeColor, editNote, togglePin }
 
 let gNotes = storageService.load('gNotes') || createNotes()
 
@@ -16,7 +16,7 @@ function getNoteById(noteId) {
 }
 
 function query(query) {
-    const notes = !query ?[...gNotes] : 
+    const notes = !query ? [...gNotes] :
         gNotes.filter(note => {
             return (note.info.txtInput.includes(query))
         });
@@ -61,6 +61,17 @@ function editNote(id, title, input) {
     saveNotes()
 
     return Promise.resolve(note);
+}
+
+function togglePin(note) {
+    let editNote = gNotes.find(currNote => {
+        return currNote.id === note.id
+    })
+    editNote = { ...editNote }
+    editNote.isPinned = !editNote.isPinned
+    gNotes = gNotes.map(note => note.id === editNote.id ? editNote : note)
+    saveNotes()
+    return Promise.resolve(true)
 }
 
 function changeBGColor(note, color) {

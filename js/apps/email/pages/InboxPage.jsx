@@ -53,8 +53,7 @@ export default class InboxPage extends React.Component {
                 }
                 )
                 this.loadEmails()
-            }
-            )
+            })
     }
 
     updateIsReadSelected = () => {
@@ -84,15 +83,17 @@ export default class InboxPage extends React.Component {
     }
 
     render() {
-        return <React.Fragment>
-            <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
-            <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
-            <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
-            <ReadStatusEmail selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
+        return <main>
+            <div className="settings-container">
+                <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
+                <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
+                <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
+                <ReadStatusEmail hasSelectedUnRead={this.state.hasSelectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
+            </div>
             <AddStarEmail
                 selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}></AddStarEmail>
             <EmailList toggleStarred={this.toggleStarred}
                 toggleSelection={this.toggleSelection} emails={this.state.emails}></EmailList>
-        </React.Fragment>
+        </main>
     }
 }
