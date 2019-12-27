@@ -7,11 +7,12 @@ export default class ComposeEmail extends React.Component {
         subject: '',
         body: ''
     }
-
+    componentDidMount() {
+        let email = this.props.location.state || {}
+        this.setState({ to: email.to || '', cc: email.cc || '', subject: (email.subject) ? (`Re: ` + email.subject) : '', body: (email.body) ? (`\n\nReplying about:\n`+email.body) : '' })
+    }
     inputChange = (ev) => {
         let fieldName = ev.target.name;
-        console.log(fieldName);
-
         this.setState({ [fieldName]: ev.target.value })
     }
 
@@ -21,14 +22,12 @@ export default class ComposeEmail extends React.Component {
     }
 
     render() {
-        console.log(this.state);
-
         return <section className="flex column">
             <header>New Message</header>
-            <input onChange={this.inputChange} type="text" placeholder="To" name="to"></input>
-            <input onChange={this.inputChange} type="text" placeholder="Cc" name="cc"></input>
-            <input onChange={this.inputChange} type="text" placeholder="Subject" name="subject"></input>
-            <textarea onChange={this.inputChange} name="body"></textarea>
+            <input onChange={this.inputChange} type="text" placeholder="To" name="to" value={this.state.to}></input>
+            <input onChange={this.inputChange} type="text" placeholder="Cc" name="cc" value={this.state.cc}></input>
+            <input onChange={this.inputChange} type="text" placeholder="Subject" name="subject" value={this.state.subject}></input>
+            <textarea onChange={this.inputChange} name="body" value={this.state.body}></textarea>
             <button onClick={this.onSend}>Send</button>
         </section>
     }
