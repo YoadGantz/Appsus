@@ -70,19 +70,6 @@ function saveEmails() {
     storageService.store('gEmails', gEmails)
 }
 
-function createEmail(subject, body, isRead, sentAt) {
-    const email = {
-        id: utils.getRandomId(),
-        subject,
-        body,
-        isRead,
-        isSelected: false,
-        isStarred: false,
-        sentAt
-    }
-    return email
-}
-
 function changeIsRead(email) {
     gEmails = gEmails.map(currEmail => {
         if (email.id === currEmail.id) currEmail.isRead = true;
@@ -161,6 +148,20 @@ function deleteSelected() {
     gEmails = gEmails.filter((email) => { return (!email.isSelected) })
     saveEmails();
     return Promise.resolve(true)
+}
+
+
+function createEmail(subject, body, isRead, sentAt) {
+    const email = {
+        id: utils.getRandomId(),
+        subject,
+        body,
+        isRead,
+        isSelected: false,
+        isStarred: false,
+        sentAt
+    }
+    return email
 }
 
 function createEmails() {

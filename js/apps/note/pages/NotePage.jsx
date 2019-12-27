@@ -12,6 +12,16 @@ export default class InboxPage extends React.Component {
 
     componentDidMount() {
         this.loadNotes();
+        this.getNoteFromUrl();
+    }
+
+    getNoteFromUrl = () => {
+        let noteType = 'NoteText'
+        let noteInfo = this.props.history.location.search
+        noteInfo = decodeURI(noteInfo)
+        noteInfo = noteInfo.substring(noteInfo.indexOf('=') + 1)
+        if (noteInfo) this.onAddNote(noteType, noteInfo)
+        this.props.history.push(`/note`)
     }
 
     onDelete = (note) => {
@@ -38,14 +48,19 @@ export default class InboxPage extends React.Component {
     }
 
     onAddNote = (noteType, noteInfo) => {
-        return noteService.addNote(noteType, noteInfo).then(newNote => { 
+        return noteService.addNote(noteType, noteInfo).then(newNote => {
             eventBusService.emit('addNote')
-            this.loadNotes() 
+            this.loadNotes()
         })
     }
 
     handleChange = (changeFilter) => {
         this.setState({ filterBy: changeFilter }, this.loadNotes)
+    }
+
+    onCreateEmail = (emailBody) => {
+        console.log(emailBody)
+        this.props.history.push(`/email/compose?note=${emailBody}`)
     }
 
     render() {
@@ -57,7 +72,8 @@ export default class InboxPage extends React.Component {
                 onChangeColor={this.onChangeColor}
                 onChangeBGColor={this.onChangeBGColor}
                 delete={this.onDelete}
-                notes={this.state.notes}>
+                notes={this.state.notes}
+                onCreateEmail={this.onCreateEmail}>
             </NoteList>
 
         </React.Fragment>

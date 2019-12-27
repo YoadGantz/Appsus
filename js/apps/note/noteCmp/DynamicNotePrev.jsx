@@ -14,7 +14,8 @@ export default class DynamicNotePrev extends React.Component {
                 onChangeBGColor={this.props.onChangeBGColor}
                 delete={this.props.delete}
                 onChangeColor={this.props.onChangeColor}
-                note={this.props.note}>
+                note={this.props.note}
+                onCreateEmail={this.props.onCreateEmail}>
             </Cmp>
         </React.Fragment>
     }

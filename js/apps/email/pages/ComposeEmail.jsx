@@ -11,7 +11,16 @@ export default class ComposeEmail extends React.Component {
     componentDidMount() {
         let email = this.props.location.state || {}
         this.setState({ to: email.to || '', cc: email.cc || '', subject: (email.subject) ? (`Re: ` + email.subject) : '', body: (email.body) ? (`\n\nReplying about:\n` + email.body) : '' })
+        this.getEmailFromUrl();
     }
+
+    getEmailFromUrl = () => {
+        let emailBody = this.props.history.location.search
+        emailBody = decodeURI(emailBody)
+        emailBody = emailBody.substring(emailBody.indexOf('=') + 1)
+        if (emailBody) this.setState({ body: emailBody })
+    }
+
     inputChange = (ev) => {
         let fieldName = ev.target.name;
         this.setState({ [fieldName]: ev.target.value })
