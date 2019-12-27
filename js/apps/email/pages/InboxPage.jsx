@@ -12,13 +12,14 @@ export default class InboxPage extends React.Component {
         filterBy: '',
         filterStatus: 'isAll',
         sortBy: 'date',
-        hasSelectedUnRead:false
+        hasSelectedUnRead: false
     }
 
     componentDidMount() {
-        emailService.unSelectAll()
-        this.getUnReadCount()
-        this.loadEmails();
+        emailService.unSelectAll().then(() => {
+            this.getUnReadCount()
+            this.loadEmails();
+        })
     }
 
     componentWillUnMount() {
@@ -47,10 +48,9 @@ export default class InboxPage extends React.Component {
     toggleSelection = (email) => {
         emailService.toggleSelection(email)
             .then((hasSelectedUnRead) => {
-                this.setState({hasSelectedUnRead})
+                this.setState({ hasSelectedUnRead })
                 this.loadEmails()
-            }
-            )
+            })
     }
 
     updateIsReadSelected = () => {
@@ -59,12 +59,14 @@ export default class InboxPage extends React.Component {
     }
 
     render() {
-        return <React.Fragment>
-            <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
-            <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
-            <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
-            <ReadStatusEmail hasSelectedUnRead = {this.state.hasSelectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
+        return <main>
+            <div className="settings-container">
+                <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
+                <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
+                <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
+                <ReadStatusEmail hasSelectedUnRead={this.state.hasSelectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusEmail>
+            </div>
             <EmailList addToSelected={this.toggleSelection} emails={this.state.emails}></EmailList>
-        </React.Fragment>
+        </main>
     }
 }

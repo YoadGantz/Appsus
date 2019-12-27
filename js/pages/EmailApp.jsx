@@ -20,7 +20,7 @@ export default class EmailApp extends React.Component {
     }
 
     render() {
-        return (<content className="flex">
+        return (<section className="flex">
             <UserMsg></UserMsg>
             <Router history={history}>
                 <EmailNavBar unReadCount={this.state.unReadCount}></EmailNavBar>
@@ -31,6 +31,6 @@ export default class EmailApp extends React.Component {
                     <Route render={(props) => <EmailDetailPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/:id" exact></Route>
                 </Switch>
             </Router>
-        </content>)
+        </section>)
     }
 }

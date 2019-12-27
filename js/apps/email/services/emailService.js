@@ -122,6 +122,7 @@ function unSelectAll() {
         return email
     })
     saveEmails()
+    return Promise.resolve();
 }
 
 function createEmails() {

@@ -12,7 +12,7 @@ class Appsus extends React.Component {
 
     render() {
         return (
-            <main className="flex column">
+            <div className="content-container flex column">
                 <Router history={history}>
                     <NavBar></NavBar>
                     <Switch>
@@ -21,7 +21,7 @@ class Appsus extends React.Component {
                         <Route component={NoteApp} path="/note"></Route>
                     </Switch>
                 </Router>
-            </main>
+            </div>
         )
     }
 }

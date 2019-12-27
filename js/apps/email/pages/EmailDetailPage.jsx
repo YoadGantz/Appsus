@@ -17,11 +17,14 @@ export default class EmailDetailPage extends React.Component {
         const { id } = this.props.match.params;
 
         emailService.getEmailById(id).then(email => {
-            emailService.changeIsRead(email);
-            this.setState({ email })
-            this.getUnReadCount()
+            emailService.changeIsRead(email).then(() => {
+                this.setState({ email })
+                this.getUnReadCount()
+            });
+
         })
     }
+
 
     goBack = () => { //if sent go back to sent, get it from match.. 
         this.props.history.push('/email/inbox')
