@@ -1,5 +1,6 @@
 import NotePage from "../apps/note/pages/NotePage.jsx";
 import NoteEditPage from "../apps/note/pages/NoteEditPage.jsx";
+import UserMsg from "../cmps/UserMsg.jsx";
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
@@ -9,6 +10,7 @@ const history = createBrowserHistory()
 export default class EmailApp extends React.Component {
     render() {
         return (<content>
+            <UserMsg></UserMsg>
             <Router history={history}>
                 <Switch>
                     <Route component={NotePage} path="/note" exact></Route>

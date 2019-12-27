@@ -1,5 +1,6 @@
 import noteService from "../services/noteService.js";
 import NoteEdit from "../noteCmp/NoteEdit.jsx"
+import eventBusService from "../../services/eventBusService.js";
 export default class NoteEditPage extends React.Component {
     state = {
         note: ''
@@ -27,8 +28,10 @@ export default class NoteEditPage extends React.Component {
     }
 
     onDelete = (note) => {
-        noteService.deleteNote(note)
-        this.props.history.push('/note')
+        noteService.deleteNote(note).then(() => {
+            eventBusService.emit('delete')
+            this.props.history.push('/note')
+        })
     }
 
     onChangeBGColor = (note, color) => {

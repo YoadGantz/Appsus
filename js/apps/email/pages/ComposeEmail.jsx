@@ -1,4 +1,5 @@
 import emailService from "../services/emailService.js";
+import eventBusService from "../../services/eventBusService.js"
 
 export default class ComposeEmail extends React.Component {
     state = {
@@ -18,7 +19,10 @@ export default class ComposeEmail extends React.Component {
 
     onSend = () => {
         emailService.sendEmail(this.state.subject, this.state.body, false, Date.now())
-            .then(this.props.history.push('/email/inbox'))
+            .then((email) => {
+                eventBusService.emit('emailSent', email)
+                this.props.history.push('/email/inbox')
+            })
     }
 
     render() {

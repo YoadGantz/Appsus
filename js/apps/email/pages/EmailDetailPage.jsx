@@ -1,5 +1,6 @@
 import emailService from '../services/emailService.js'
 import EmailDetail from '../emailCmp/EmailDetail.jsx'
+import eventBusService from '../../services/eventBusService.js';
 
 const { Link } = ReactRouterDOM
 
@@ -32,6 +33,7 @@ export default class EmailDetailPage extends React.Component {
 
     onDelete = (email) => {
         emailService.deleteEmail(email).then(() => {
+            eventBusService.emit('delete')
             this.props.history.push('/email/inbox')
         });
     }
