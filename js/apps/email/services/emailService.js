@@ -3,9 +3,10 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { getEmails, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail}
+export default { getEmails, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, addToSelected }
 
 let gEmails = storageService.load('gEmails') || createEmails()
+let gSelectedEmailsIds = []
 
 function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId)
@@ -15,7 +16,7 @@ function getEmailById(emailId) {
 function sendEmail(subject, body, isRead, sentAt) {
     const email = createEmail(subject, body, isRead, sentAt);
     console.log(email);
-    
+
     gEmails.push(email)
     storageService.store('gEmails', gEmails)
     return Promise.resolve(email)
@@ -41,7 +42,7 @@ function getUnReadCount() {
     let unReadCount = gEmails.reduce(function (count, email) {
         if (!email.isRead) count++
         return count
-    },0);
+    }, 0);
     return Promise.resolve(unReadCount)
 }
 
@@ -56,12 +57,24 @@ function createEmail(subject, body, isRead, sentAt) {
     return email
 }
 
-function changeIsRead(email) {//we can use get email by id instead.. no real use for this func... 
+function changeIsRead(email) {
     gEmails = gEmails.map(currEmail => {
         if (email.id === currEmail.id) currEmail.isRead = true;
         return currEmail;
     })
     return Promise.resolve(true);
+}
+
+function addToSelected(emailId) {
+    if (!gSelectedEmailsIds.includes(emailId)) {
+        gSelectedEmailsIds.push(emailId)
+    } else {
+        let currEmailIdx = gSelectedEmailsIds.findIndex((currEmailIdx) => { currEmailIdx === emailId })
+        gSelectedEmailsIds.splice(currEmailIdx, 1)
+        console.log(currEmailIdx)
+    }
+    console.log(gSelectedEmailsIds)
+    console.log(gSelectedEmailsIds.includes(emailId))
 }
 
 function createEmails() {

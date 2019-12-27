@@ -18,7 +18,12 @@ export default class InboxPage extends React.Component {
     loadEmails = () => {
         emailService.getEmails(this.state.filterBy).then(emails => { this.setState({ emails }) })
     }
+
+    addToSelected = (emailId) => {
+        emailService.addToSelected(emailId)
+    }
+
     render() {
-        return <EmailList emails={this.state.emails}></EmailList>
+        return <EmailList addToSelected={this.addToSelected} emails={this.state.emails}></EmailList>
     }
 }
