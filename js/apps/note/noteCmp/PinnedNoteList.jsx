@@ -12,7 +12,8 @@ export default class PinnedNoteList extends React.Component {
                         delete={this.props.delete}
                         togglePin={this.props.togglePin}
                         note={note}
-                        onChangeColor={this.props.onChangeColor}>
+                        onChangeColor={this.props.onChangeColor}
+                        onCreateEmail={this.props.onCreateEmail}>
                     </DynamicNotePrev>
                 )}
             </ul>

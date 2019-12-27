@@ -1,13 +1,29 @@
 'use strict'
-const { Link } = ReactRouterDOM
+import LongTxt from "../../apps cmps/LongTxt.jsx"
 export default class EmailPreview extends React.Component {
     onSelect = () => {
-        this.props.addToSelected(this.props.email)
+        this.props.toggleSelection(this.props.email)
+    }
+
+    onStar = () => {
+        this.props.toggleStarred(this.props.email)
+    }
+
+    onExpand = () => {
+        this.props.goToDetails(this.props.email.id)
     }
 
     render() {
         const email = this.props.email;
-        return <li className={(email.isRead) ? 'read' : 'not-read'}><input type="checkbox" onClick={this.onSelect} /><Link to={`/email/${email.id}`}><span>{email.subject}{email.body} {email.sentAt}</span></Link>
+        return <li className={(email.isRead) ? 'read' : 'not-read'}>
+                    <input type="checkbox" onClick={this.onSelect} />
+                    <img className={(email.isStarred) ? 'star' : 'un-star'} height="10px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
+                    <span>
+                        {email.subject}
+                        <LongTxt onExpand={this.onExpand} text={email.body} shortLength={80}>
+                        </LongTxt>
+                        {email.sentAt}
+                    </span>
         </li>
     }
 }

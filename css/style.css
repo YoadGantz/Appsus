@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
 }
@@ -88,6 +89,10 @@ main {
 .not-read {
     font-weight: bold;
     margin-block-end: 20px;
+}
+
+.star{
+    background-color: rgb(255, 255, 0);
 }
 
 /* Notes app */

@@ -30,7 +30,7 @@ export default class NoteEdit extends React.Component {
             <React.Fragment>
                 <input type="text" placeholder="Title" name="title" value={this.state.title} onChange={this.inputChange} />
                 <input type="text" placeholder="Body" name="text" value={this.state.text} onChange={this.inputChange} />
-                <button onClick={() => this.props.delete(this.props.note)}>X</button>
+                <img height="20px" src="../../../imgs/icons/delete.svg" onClick={() => this.props.delete(this.props.note)} />
                 <Link to='/note'>
                     <button onClick={this.onEditNote}>Save Changes</button>
                 </Link>

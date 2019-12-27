@@ -1,6 +1,10 @@
 import NoteEditControl from "./NoteEditControl.jsx";
 
 export default class NoteText extends React.Component {
+    onCreateEmail = () => {
+        let emailBody = this.props.note.info.txtInput
+        this.props.onCreateEmail(emailBody)
+    }
 
     render() {
         let style = this.props.note.style || 'none';
@@ -15,6 +19,7 @@ export default class NoteText extends React.Component {
                 onChangeBGColor={this.props.onChangeBGColor}
                 onChangeColor={this.props.onChangeColor}
             ></NoteEditControl>
+            <img title="create an Email"onClick={this.onCreateEmail} height="25px" src="../imgs/icons/email.svg" />
         </li>
     }
 }

@@ -19,14 +19,16 @@ export default class NoteList extends React.Component { //switch to function may
                     delete={this.props.delete}
                     togglePin={this.props.togglePin}
                     notes={pinnedNotes}
-                    onChangeColor={this.props.onChangeColor}>
+                    onChangeColor={this.props.onChangeColor}
+                    onCreateEmail={this.props.onCreateEmail}>
                 </PinnedNoteList>
                 <UnpinnedNoteList
                     onChangeBGColor={this.props.onChangeBGColor}
                     delete={this.props.delete}
                     togglePin={this.props.togglePin}
                     notes={unpinnedNotes}
-                    onChangeColor={this.props.onChangeColor}>
+                    onChangeColor={this.props.onChangeColor}
+                    onCreateEmail={this.props.onCreateEmail}>
                 </UnpinnedNoteList>
             </React.Fragment>
         )

@@ -26,8 +26,8 @@ export default class EmailDetailPage extends React.Component {
     }
 
 
-    goBack = () => { //if sent go back to sent, get it from match.. 
-        this.props.history.push('/email/inbox')
+    goBack = () => {
+        this.props.history.goBack()
     }
 
     getUnReadCount = () => {
@@ -41,10 +41,15 @@ export default class EmailDetailPage extends React.Component {
         });
     }
 
+    onCreateNote = () => {
+        let email = this.state.email
+        this.props.history.push(`/note?body=${email.body}`)
+    }
+
     render() {
         if (!this.state.email) return <div className="loading"> Loading...</div>
         return <React.Fragment>
-            <EmailDetail email={this.state.email} delete={() => this.onDelete(this.state.email)} goBack={this.goBack}></EmailDetail>
+            <EmailDetail onCreateNote={this.onCreateNote} email={this.state.email} delete={() => this.onDelete(this.state.email)} goBack={this.goBack}></EmailDetail>
             <Link to={{ pathname: "/email/compose", state: this.state.email }}>Reply</Link>
         </React.Fragment>
     }
