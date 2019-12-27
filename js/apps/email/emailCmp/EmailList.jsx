@@ -5,7 +5,6 @@ import EmailPreview from "./EmailPreview.jsx";
 
 export default class EmailList extends React.Component {
  
-
     render() {
         return (
             <ul className="email-container">

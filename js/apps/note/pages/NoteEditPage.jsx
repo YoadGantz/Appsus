@@ -42,8 +42,6 @@ export default class NoteEditPage extends React.Component {
     }
 
     render() {
-        console.log('hey', this.state.note);
-
         if (!this.state.note) return <div className="loading"> Loading...</div>
         return <ul>
             <NoteEdit

@@ -9,14 +9,22 @@ const { createBrowserHistory } = History
 const history = createBrowserHistory()
 
 export default class EmailApp extends React.Component {
+    state = {
+        unReadCount: 0
+    }
+
+    setUnReadCount = (unReadCount) => {
+        this.setState({ unReadCount: unReadCount })
+    }
+
     render() {
         return (<content className="flex">
             <Router history={history}>
-                <EmailNavBar></EmailNavBar>
+                <EmailNavBar unReadCount={this.state.unReadCount}></EmailNavBar>
                 <Switch>
-                    <Route component={InboxPage} path="/email/inbox"></Route>
+                    <Route render={(props) => <InboxPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/inbox" exact></Route>
                     <Route component={SentPage} path="/email/sent"></Route>
-                    <Route component={EmailDetailPage} path="/email/:id"></Route>
+                    <Route render={(props) => <EmailDetailPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/:id" exact></Route>
                 </Switch>
             </Router>
         </content>

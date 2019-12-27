@@ -14,7 +14,6 @@ export default class NoteEdit extends React.Component {
         let title = this.props.note.info.title || ''
         let text = this.props.note.info.txtInput
         this.setState({ title, text })
-
     }
 
     inputChange = (ev) => { //make generic field update

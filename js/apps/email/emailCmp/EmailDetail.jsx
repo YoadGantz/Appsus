@@ -5,7 +5,7 @@ export default class EmailDetail extends React.Component {
     render() {
         return <div>
             <button onClick={this.props.goBack}>BACK</button>
-            <button onClick={this.props.delete}><img src="../imgs/icons/delete.png"/></button>
+            <button onClick={this.props.delete}><img height="20px" src="../imgs/icons/delete.svg"/></button>
             <div>
                 <p>{this.props.email.sentAt}</p>
                 <h3><span>Subject</span>: {this.props.email.subject}</h3>

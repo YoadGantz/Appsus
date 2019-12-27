@@ -7,7 +7,12 @@ export default class InboxPage extends React.Component {
     }
 
     componentDidMount() {
+        this.getUnReadCount()
         this.loadEmails();
+    }
+
+    getUnReadCount = () => {
+        emailService.getUnReadCount().then(count => { this.props.setUnReadCount(count) })
     }
 
     loadEmails = () => {

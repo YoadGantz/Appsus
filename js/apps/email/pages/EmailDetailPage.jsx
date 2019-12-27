@@ -10,23 +10,22 @@ export default class EmailDetailPage extends React.Component {
         this.loadEmail();
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.id !== this.props.match.params.id) {
-            this.loadEmail();
-        }
-    }
-
     loadEmail() {
         const { id } = this.props.match.params;
         
         emailService.getEmailById(id).then(email => {
-            this.setState({ email })
             emailService.changeIsRead(email);
+            this.setState({ email })
+            this.getUnReadCount()
         })
     }
 
     goBack = () => { //if sent go back to sent, get it from match.. 
         this.props.history.push('/email/inbox')
+    }
+
+    getUnReadCount = () => {
+        emailService.getUnReadCount().then(count => { this.props.setUnReadCount(count) })
     }
 
     onDelete = (email)=>{

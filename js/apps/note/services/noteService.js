@@ -1,8 +1,6 @@
 'use strict'
-
-// import storageService from '../../services/storageService.js'
-import storageService from '...../services/storageService.js'
-import utils from '...../services/utils.js'
+import storageService from '../../services/storageService.js'
+import utils from '../../services/utils.js'
 
 export default { query, getNoteById, addNote, deleteNote, changeBGColor, changeColor, editNote }
 
@@ -55,7 +53,6 @@ function deleteNote(note) {
 }
 
 function editNote(id, title, input) {
-    console.log(id, title, input);
     let note = gNotes.find(note => note.id === id)
     note = { ...note }
     note.info.title = title
