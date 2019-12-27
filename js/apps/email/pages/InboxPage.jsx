@@ -2,12 +2,14 @@ import emailService from "../services/emailService.js";
 import EmailList from "../emailCmp/EmailList.jsx";
 import Search from "../../apps cmps/Search.jsx";
 import FilterEmail from "../emailCmp/FilterEmail.jsx";
+import SortEmail from "../emailCmp/SortEmail.jsx";
 
 export default class InboxPage extends React.Component {
     state = {
         emails: [],
         filterBy: '',
         filterStatus: 'isAll',
+        sortBy: 'date'
     }
 
     componentDidMount() {
@@ -16,15 +18,15 @@ export default class InboxPage extends React.Component {
     }
 
     handleChange = (changeFilter) => {
-        console.log(changeFilter);
-
         this.setState({ filterBy: changeFilter }, this.loadEmails)
     }
 
     handleStatusChange = (changeFilter) => {
-        console.log(changeFilter);
-
         this.setState({ filterStatus: changeFilter }, this.loadEmails)
+    }
+
+    handleSortChange = (changeSort) => {
+        this.setState({ sortBy: changeSort}, this.loadEmails)
     }
 
     getUnReadCount = () => {
@@ -32,12 +34,13 @@ export default class InboxPage extends React.Component {
     }
 
     loadEmails = () => {
-        emailService.query(this.state.filterBy, this.state.filterStatus).then(emails => { this.setState({ emails }) })
+        emailService.query(this.state.filterBy, this.state.filterStatus, this.state.sortBy).then(emails => { this.setState({ emails }) })
     }
     render() {
         return <React.Fragment>
             <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
             <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
+            <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
             <EmailList emails={this.state.emails}></EmailList>
         </React.Fragment>
     }
