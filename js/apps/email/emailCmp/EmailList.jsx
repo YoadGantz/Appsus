@@ -9,7 +9,7 @@ export default class EmailList extends React.Component {
         return (
             <ul className="email-container">
                 {this.props.emails.map(email => 
-                    <EmailPreview key={email.id} email={email}></EmailPreview>
+                    <EmailPreview addToSelected={this.props.addToSelected} key={email.id} email={email}></EmailPreview>
                 )}
             </ul>
         )

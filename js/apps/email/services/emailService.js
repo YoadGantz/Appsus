@@ -3,7 +3,7 @@
 import storageService from '../../services/storageService.js'
 import utils from '../../services/utils.js'
 
-export default { query, getEmailById, deleteEmail, changeReadStatus: changeReadStatus, getUnReadCount, sendEmail }
+export default { query, getEmailById, deleteEmail, changeIsRead, getUnReadCount, sendEmail, toggleSelection, updateIsReadSelected, unSelectAll }
 
 let gEmails = storageService.load('gEmails') || createEmails()
 
@@ -76,18 +76,52 @@ function createEmail(subject, body, isRead, sentAt) {
         subject,
         body,
         isRead,
+        isSelected: false,
         sentAt
     }
     return email
 }
 
-function changeReadStatus(email) {//we can use get email by id instead.. no real use for this func... 
+function changeIsRead(email) {
     gEmails = gEmails.map(currEmail => {
         if (email.id === currEmail.id) currEmail.isRead = true;
         return currEmail;
     })
     saveEmails()
     return Promise.resolve(true);
+}
+
+function toggleSelection(email) {
+    email.isSelected = !email.isSelected
+    let hasSelectedUnRead = checkHasSelectedUnRead()
+    return Promise.resolve(hasSelectedUnRead)
+}
+function checkHasSelectedUnRead() {
+    return gEmails.some((email) => { return email.isSelected && !email.isRead })
+}
+
+function updateIsReadSelected() {
+    if (checkHasSelectedUnRead()) {
+        gEmails = gEmails.map((email) => {
+            if (email.isSelected) email.isRead = true
+            return email
+        })
+    } else {
+        gEmails = gEmails.map((email) => {
+            if (email.isSelected && email.isRead) email.isRead = false
+            return email
+        })
+    }
+    saveEmails()
+    return Promise.resolve()
+}
+
+function unSelectAll() {
+    gEmails = gEmails.map((email) => {
+        email.isSelected = false
+        return email
+    })
+    saveEmails()
 }
 
 function createEmails() {
