@@ -43,7 +43,7 @@ function query(filterBy, filterStatus, sortBy) {
 }
 
 function sortByDate(email1, email2) {
-    return email1.sentAt - email2.sentAt
+    return email2.sentAt - email1.sentAt
 }
 
 function sortBySubject(email1, email2) {
@@ -179,7 +179,7 @@ function createEmails() {
         Date.now()))
     emails.push(createEmail('More related to "How can I be a good developer?"', 'Sequi rerum et eos minus rerum labore. Vitae deleniti tempore natus nulla dolor. Et aut autem pariatur officiis.',
         true,
-        Date.now()))
+        Date.now()-1000000000))
     emails.push(createEmail('The Most Clever Life-Hack I’ve Ever Learned',
         'Et est consequatur fugit deserunt similique velit.',
         true,
