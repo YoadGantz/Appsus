@@ -3,7 +3,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
 }
@@ -98,4 +97,22 @@ main {
 /* Notes app */
 .done {
     text-decoration: line-through;
+}
+
+.notes-container{
+    columns:200px 3;
+    break-after: avoid;
+}
+
+.notes-container>*{
+max-height:200px
+}
+
+li img {
+    max-width:200px
+}
+
+.image-note{
+    display:flex;
+    flex-direction: column;
 }
