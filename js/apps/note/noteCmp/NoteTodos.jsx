@@ -13,8 +13,9 @@ export default class NoteTodos extends React.Component {
         let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
         let color = style.color || 'black';
         return <React.Fragment>
-            <li style={{ backgroundColor: bgc, color: color }}>
-                <ul>{todos.map((todo, i) => {
+            <li class-name="note-container flex column totally-center"
+            style={{ backgroundColor: bgc, color: color }}>
+                <ul className="note-content full">{todos.map((todo, i) => {
 
                     return <li className={(todo.isDone ? 'done' : '')} key={i}>{todo.txtInput}
                         <input type="checkbox" onClick={() => this.todoDone(todo)} />
@@ -22,15 +23,14 @@ export default class NoteTodos extends React.Component {
 
                 })}
                 </ul>
+                <NoteEditControl
+                    togglePin={this.props.togglePin}
+                    delete={this.props.delete}
+                    note={this.props.note}
+                    onChangeBGColor={this.props.onChangeBGColor}
+                    onChangeColor={this.props.onChangeColor}
+                ></NoteEditControl>
             </li>
-            <NoteEditControl
-                togglePin={this.props.togglePin}
-                delete={this.props.delete}
-                note={this.props.note}
-                onChangeBGColor={this.props.onChangeBGColor}
-                onChangeColor={this.props.onChangeColor}
-            ></NoteEditControl>
-
         </React.Fragment>
     }
 }

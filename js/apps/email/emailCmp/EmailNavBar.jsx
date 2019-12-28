@@ -9,11 +9,11 @@ export default function NavBar(props) {
             <li className="inbox">
                 <NavLink activeClassName="active" to='/email/inbox' exact>Inbox<span>{props.unReadCount}</span></NavLink>
             </li>
-            <li className="sent">
-                <NavLink activeClassName="active" to='/email/sent' exact>Sent</NavLink>
-            </li>
             <li className="starred">
                 <NavLink activeClassName="active" to='/email/starred' exact>Starred</NavLink>
+            </li>
+            <li className="sent">
+                <NavLink activeClassName="active" to='/email/sent' exact>Sent</NavLink>
             </li>
         </ul>
     </aside>

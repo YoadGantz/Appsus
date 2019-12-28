@@ -110,10 +110,28 @@ function createNote(type, txt) {
 
 function createNotes() { // consider creating a constructor for note 
     let notes = []
+    notes.push(createNote('NoteImage', "http://tripjaunt.com/wp-content/uploads/2016/11/magicalplaces-featured.jpg"))
+    notes.push(createNote('NoteText', "Can't wait for 17/2/20"))
+    notes.push(createNote('NoteText', "If opportunity doesn't knock, build a door. \"Milton Berle\""))
+    notes.push(createNote('NoteImage', "https://i.redd.it/u7vzzy7puzr11.jpg"))
+    notes.push(createNote('NoteImage', "http://tripjaunt.com/wp-content/uploads/2016/11/magicalplaces-featured.jpg"))
+    notes.push(createNote('NoteText', "Can't wait for 17/2/20"))
+    notes.push(createNote('NoteText', "If opportunity doesn't knock, build a door. \"Milton Berle\""))
+    notes.push(createNote('NoteImage', "https://i.redd.it/u7vzzy7puzr11.jpg"))
     notes.push(createNote('NoteText', "This is AWESOME"))
-    notes.push(createNote('NoteText', "This is AWESOME"))
-    notes.push(createNote('NoteText', "This is AWESOME"))
-    notes.push(createNote('NoteImage', "https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"))
+    // notes.push(createNote('NoteTodos', "Rome, Tahiti, Milano, Iceland"))
+    notes.push(createNote('NoteImage', "https://media.giphy.com/media/1d7F9xyq6j7C1ojbC5/giphy.gif"))
+    notes.push(createNote('NoteVideo', "https://www.youtube.com/embed/ZW3rR9_E3Rw"))
+    notes.push(createNote('NoteText', "What’s the best thing about Switzerland? I don’t know, but the flag is a big plus."))
+    notes.push(createNote('NoteImage', "https://images.theconversation.com/files/296905/original/file-20191014-135529-xgmui3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip")) 
+    notes.push(createNote('NoteImage', "https://media.giphy.com/media/1d7F9xyq6j7C1ojbC5/giphy.gif"))
+    notes.push(createNote('NoteImage', "https://media.giphy.com/media/1d7F9xyq6j7C1ojbC5/giphy.gif"))
+    notes.push(createNote('NoteVideo', "https://www.youtube.com/embed/ZW3rR9_E3Rw"))
+    notes.push(createNote('NoteText', "What’s the best thing about Switzerland? I don’t know, but the flag is a big plus."))
+    notes.push(createNote('NoteVideo', "https://www.youtube.com/embed/ZW3rR9_E3Rw"))
+    notes.push(createNote('NoteText', "What’s the best thing about Switzerland? I don’t know, but the flag is a big plus."))
+    notes.push(createNote('NoteImage', "https://images.theconversation.com/files/296905/original/file-20191014-135529-xgmui3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"))
+
 
     storageService.store('gNotes', notes)
     return notes

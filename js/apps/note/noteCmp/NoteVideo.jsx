@@ -7,14 +7,16 @@ export default class NoteVideo extends React.Component {
         let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
         let color = style.color || 'black';
         return <React.Fragment>
-            <li style={{ backgroundColor: bgc, color: color }}><iframe type="text/html" id="player" width="200" height="150" src={vidUrl} frameBorder="0"></iframe></li>
-            <NoteEditControl
-                togglePin={this.props.togglePin}
-                delete={this.props.delete}
-                note={this.props.note}
-                onChangeBGColor={this.props.onChangeBGColor}
-                onChangeColor={this.props.onChangeColor}
-            ></NoteEditControl>
+            <li class-name="note-container flex column totally-center" style={{ backgroundColor: bgc, color: color }}>
+                <iframe className="note-content full" type="text/html" id="player" width="260" height="150" src={vidUrl} frameBorder="0"></iframe>
+                <NoteEditControl
+                    togglePin={this.props.togglePin}
+                    delete={this.props.delete}
+                    note={this.props.note}
+                    onChangeBGColor={this.props.onChangeBGColor}
+                    onChangeColor={this.props.onChangeColor}
+                ></NoteEditControl>
+            </li>
         </React.Fragment>
     }
 }//add iframe 

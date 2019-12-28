@@ -15,17 +15,22 @@ export default class NoteText extends React.Component {
         let style = this.props.note.style || 'none';
         let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
         let color = style.color || 'black';
-        return <li style={{ backgroundColor: bgc, color: color }}>
-                    <LongTxt onExpand={this.onExpand} text={this.props.note.info.txtInput} shortLength={30}>
-                    </LongTxt>
-                    <NoteEditControl
-                        togglePin={this.props.togglePin}
-                        delete={this.props.delete}
-                        note={this.props.note}
-                        onChangeBGColor={this.props.onChangeBGColor}
-                        onChangeColor={this.props.onChangeColor}>
-                    </NoteEditControl>
-                    <img title="create an Email" onClick={this.onCreateEmail} height="25px" src="../imgs/icons/email.svg" />
-               </li>
+        return <li className="note-container flex column totally-center" style={{ backgroundColor: bgc, color: color }}><div className="note-content txt full">
+            <LongTxt onExpand={this.onExpand} text={this.props.note.info.txtInput} shortLength={50}>
+            </LongTxt>
+        </div>
+            <div className="controls-container flex">
+                <NoteEditControl
+                    togglePin={this.props.togglePin}
+                    delete={this.props.delete}
+                    note={this.props.note}
+                    onChangeBGColor={this.props.onChangeBGColor}
+                    onChangeColor={this.props.onChangeColor}
+                    onCreateEmail={this.props.onCreateEmail}
+                >
+                </NoteEditControl>
+                <img title="create an Email" onClick={this.onCreateEmail} height="25px" src="../imgs/icons/email.svg" />
+            </div>
+        </li>
     }
 }

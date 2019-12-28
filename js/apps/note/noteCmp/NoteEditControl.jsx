@@ -3,8 +3,8 @@ const { Link } = ReactRouterDOM
 export default class NoteEditControl extends React.Component {
     render() {
         const note = this.props.note
-        return <React.Fragment>
-            <img height="20px" src={note.isPinned ? "../../../../imgs/icons/unpin.svg" : "../../../../imgs/icons/pin.svg"} onClick={() => this.props.togglePin(note)} />
+        return <div className="note-controls flex totally-center">
+            <img height="20px" width="20px" src={note.isPinned ? "../../../../imgs/icons/unpin.svg" : "../../../../imgs/icons/pin.svg"} onClick={() => this.props.togglePin(note)} />
             <label><img height="25px" src="../../../../imgs/icons/paint.svg" />
                 <input onChange={(ev) => {
                     this.props.onChangeBGColor(note, ev.target.value)
@@ -15,6 +15,6 @@ export default class NoteEditControl extends React.Component {
             </label>
             <span onClick={() => this.props.delete(note)}><img height="25px" src="../../../imgs/icons/delete.svg" /></span>
             <Link to={`/note/edit/${note.id}`}><img height="25px" src="../../../../imgs/icons/edit.svg" /></Link>
-        </React.Fragment>
+        </div>
     }
 }

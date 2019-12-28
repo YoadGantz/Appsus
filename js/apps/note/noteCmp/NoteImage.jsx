@@ -5,9 +5,9 @@ export default function NoteImage(props) {
     let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
     let color = style.color || 'black';
     return <React.Fragment>
-        <li class-name="image-note" style={{ backgroundColor: bgc, color: color }}><img src={props.note.info.txtInput} />
-            <span className="note-controls">
-
+        <li class-name="note-container flex column totally-center" style={{ backgroundColor: bgc, color: color }}>
+            <img className="note-content full" height="200px" src={props.note.info.txtInput} />
+            <div className="controls-container">
                 <NoteEditControl
                     togglePin={props.togglePin}
                     delete={props.delete}
@@ -15,7 +15,7 @@ export default function NoteImage(props) {
                     onChangeBGColor={props.onChangeBGColor}
                     onChangeColor={props.onChangeColor}>
                 </NoteEditControl>
-            </span>
+            </div>
         </li>
     </React.Fragment>
 }

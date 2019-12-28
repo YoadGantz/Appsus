@@ -4,7 +4,7 @@ export default class PinnedNoteList extends React.Component {
     render() {
         return <React.Fragment>
             <h2>Pinned</h2>
-            <ul className="notes-container">
+            <ul className="notes-container pinned">
                 {this.props.notes.map(note =>
                     <DynamicNotePrev
                         key={note.id}
