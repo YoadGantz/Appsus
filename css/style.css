@@ -118,13 +118,20 @@ main {
 
 /* Note app */
 
+.app-container{
+    max-width:1100px;
+    padding-block-start: 20px;
+}
+
 /* Add Note Component */
 
 .add-note-container {
-    min-height: 60px;
-    min-width: 650px;
+    min-height: 80px;
+    max-width: 650px;
+    margin:auto;
+    margin-block-end: 20px;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
-    border-radius: 7px;
+    border-radius: 8px;
     background-color: rgb(255, 255, 255);
 }
 
@@ -133,6 +140,11 @@ main {
     padding: 15px;
     border-radius: inherit;
     background-color: inherit
+}
+
+.app-container .search-container{
+    margin:auto;
+
 }
 
 .types-container {
@@ -153,7 +165,7 @@ main {
 .save-btn {
     color: #757575;
     margin-inline-end: 5px;
-    border-radius: 7px;
+    border-radius: 8px;
     padding: 2px;
     width: 60px;
     height: 50px;
@@ -166,14 +178,12 @@ main {
 /* Notes */
 
 .notes-container {
-    min-width: 1100px;
     columns: 200px 4;
 }
 
 .pinned {
     border-radius: 8px;
     border: 1px solid #e0e0e0;
-    min-height: 150px;
 }
 
 .notes-container>* {
@@ -216,6 +226,38 @@ main {
     margin-inline-end: 5px;
 }
 
+.edit-container {
+    min-width: 400px;
+    padding: 20px;
+}
+
+.edit-container>*:not(:last-child) {
+    margin-block-end: 20px;
+}
+
+.title-edit {
+    min-width: 100%;
+    min-height: 40px;
+    padding-inline-start: 12px;
+}
+
+.note-edit {
+    font-family: Raleway;
+    font-size: 1.05rem;
+    outline: none;
+    min-width: 100%;
+    min-height: 100px;
+    padding-inline-start: 12px;
+    overflow: hidden;
+    resize: none;
+}
+
+.edit-controls {
+    min-width: 30%;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .done {
     text-decoration: line-through;
 }
@@ -248,17 +290,17 @@ main {
     justify-content: center;
 }
 
-.justify-center{
+.justify-center {
     justify-content: center;
 }
 
 /* Search input helper */
 
 .search-container {
-    min-width: 20%;
+    max-width:300px;
     min-height: 45px;
     background-color: #f1f3f4;
-    border-radius: 7px;
+    border-radius: 8px;
     overflow: hidden;
     position: relative;
     margin-block-start: 20px;
@@ -296,4 +338,17 @@ input[type="search"]::-webkit-search-cancel-button {
     margin-inline-end: 10px;
     opacity: 0;
     z-index: 1;
+}
+
+/* Border-helper */
+
+.border {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+/* button helpers */
+
+.btn {
+    cursor: pointer;
 }

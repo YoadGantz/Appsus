@@ -63,9 +63,9 @@ export default class InboxPage extends React.Component {
     }
 
     render() {
-        return <React.Fragment>
-            <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
-            <AddNote onAddNote={this.onAddNote}></AddNote>
+        return <div className="app-container">
+                <AddNote onAddNote={this.onAddNote}></AddNote>
+                <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
             <NoteList
                 togglePin={this.onTogglePin}
                 onChangeColor={this.onChangeColor}
@@ -75,6 +75,6 @@ export default class InboxPage extends React.Component {
                 onCreateEmail={this.onCreateEmail}>
             </NoteList>
 
-        </React.Fragment>
+        </div>
     }
 }
