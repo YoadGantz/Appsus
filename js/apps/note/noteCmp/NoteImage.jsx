@@ -5,8 +5,10 @@ export default function NoteImage(props) {
     let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
     let color = style.color || 'black';
     return <React.Fragment>
-        <li class-name="note-container flex column totally-center" style={{ backgroundColor: bgc, color: color }}>
-            <img className="note-content full" height="200px" src={props.note.info.txtInput} />
+        <li class-name="note-container column totally-center" style={{ backgroundColor: bgc, color: color }}>
+            <div class="note-content flex justify-center full img">
+            <img height="200px" src={props.note.info.txtInput} />
+            </div>
             <div className="controls-container">
                 <NoteEditControl
                     togglePin={props.togglePin}
