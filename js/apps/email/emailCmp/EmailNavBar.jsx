@@ -7,10 +7,13 @@ export default function NavBar(props) {
                 <NavLink activeClassName="active" to='/email/compose' exact>Compose</NavLink>
             </li>
             <li className="inbox">
-                <NavLink activeClassName="active" to='/email/inbox' exact>inbox <span>{props.unReadCount}</span></NavLink>
+                <NavLink activeClassName="active" to='/email/inbox' exact>Inbox<span>{props.unReadCount}</span></NavLink>
             </li>
             <li className="sent">
-                <NavLink activeClassName="active" to='/email/sent' exact>sent</NavLink>
+                <NavLink activeClassName="active" to='/email/sent' exact>Sent</NavLink>
+            </li>
+            <li className="starred">
+                <NavLink activeClassName="active" to='/email/starred' exact>Starred</NavLink>
             </li>
         </ul>
     </aside>

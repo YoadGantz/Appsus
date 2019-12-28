@@ -3,11 +3,11 @@ import EmailList from "../emailCmp/EmailList.jsx";
 import Search from "../../apps cmps/Search.jsx";
 import FilterEmail from "../emailCmp/FilterEmail.jsx";
 import SortEmail from "../emailCmp/SortEmail.jsx";
-import DeleteSelection from "../emailCmp/DeleteSelection.jsx";
-import AddStarSelection from "../emailCmp/AddStarEmail.jsx";
 import ReadStatusSelection from "../emailCmp/ReadStatusEmail.jsx";
+import AddStarSelection from "../emailCmp/AddStarEmail.jsx";
+import DeleteSelection from "../emailCmp/DeleteSelection.jsx";
 
-export default class SentPage extends React.Component {
+export default class StarredPage extends React.Component {
     state = {
         emails: [],
         filterBy: '',
@@ -18,11 +18,17 @@ export default class SentPage extends React.Component {
     }
 
     componentDidMount() {
-        this.loadEmails();
+        emailService.unSelectAll().then(() => {
+            this.getUnReadCount()
+            this.loadEmails()
+        })
     }
 
+    loadEmails = () => {
+        emailService.query(this.state.filterBy, this.state.filterStatus, this.state.sortBy).then(emails => { this.setState({ emails }) })
+    }
 
-    handleChange = (changeFilter) => {
+    handleSearchChange = (changeFilter) => {//think about how to do it more efficient 
         this.setState({ filterBy: changeFilter }, this.loadEmails)
     }
 
@@ -34,12 +40,55 @@ export default class SentPage extends React.Component {
         this.setState({ sortBy: changeSort }, this.loadEmails)
     }
 
+    getUnReadCount = () => {
+        emailService.getUnReadCount().then(count => { this.props.setUnReadCount(count) })
+    }
 
-    loadEmails = () => {
-        emailService.query(this.state.filterBy, this.state.filterStatus, this.state.sortBy).then(emails => { this.setState({ emails }) })
+    toggleSelection = (email) => {
+        emailService.toggleSelection(email)
+            .then((selected) => {
+                this.setState({
+                    selectedUnRead: selected.selectedUnRead,
+                    selectedUnStar: selected.selectedUnStar
+                }
+                )
+                this.loadEmails()
+            })
+    }
+
+    updateIsReadSelected = () => {
+        emailService.updateIsReadSelected()
+            .then((selectedUnRead) => {
+                this.setState({ selectedUnRead })
+                this.loadEmails()
+            })
+    }
+
+    toggleStarred = (email) => {
+        emailService.toggleStarred(email)
+            .then((selectedUnStar) => {
+                this.setState({ selectedUnStar })
+                this.loadEmails()
+            }
+            )
+    }
+
+    updateIsStarredSelected = () => {
+        emailService.updateIsStarredSelected()
+            .then((selectedUnStar) => {
+                this.setState({ selectedUnStar })
+                this.loadEmails()
+            }
+            )
+    }
+
+    deleteSelected = () => {
+        emailService.deleteSelected()
+            .then(this.loadEmails())
     }
 
     goToDetails = (emailId) => {
+        console.log(emailId)
         this.props.history.push(`/email/${emailId}`)
     }
 

@@ -19,8 +19,7 @@ export default class EmailPreview extends React.Component {
                     <input type="checkbox" onClick={this.onSelect} />
                     <img className={(email.isStarred) ? 'star' : 'un-star'} height="10px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
                     <span>
-                        {email.subject}
-                        <LongTxt onExpand={this.onExpand} text={email.body} shortLength={80}>
+                        <LongTxt onExpand={this.onExpand} text={email.subject + email.body} shortLength={80}>
                         </LongTxt>
                         {email.sentAt}
                     </span>
