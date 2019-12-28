@@ -1,6 +1,18 @@
+/* Fonts */
+
+@font-face {
+    font-family: Raleway;
+    src: url(../fonts/Raleway-Regular.ttf)
+}
+
 /* Base */
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    font-family: Raleway, Roboto, Arial, sans-serif;
 }
 
 body {
@@ -17,30 +29,29 @@ li {
     margin-bottom: 20px;
 }
 
-.inbox > * {
-    display: flex;
-    justify-content: space-between;
-}
-
 a {
     text-decoration: none;
     color: inherit;
 }
 
-section {
-    flex-grow: 1;
-    overflow: hidden;
+input {
+    border: none;
+    font-family: Raleway;
+    font-size: 1.05rem;
+    outline: none;
 }
 
-main {
-    overflow-y: auto;
-}
-
-.content-container {
-    height: 100vh;
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-family: Raleway;
+    font-size: 1.05rem;
 }
 
 /* Helpers */
+
 .active {
     color: white;
     background-color: blue;
@@ -48,7 +59,7 @@ main {
 
 /* Radio button hide Helper */
 
-#bgc, #font-color, #NoteText,#NoteTodos,#NoteImage,#NoteVideo {
+#bgc, #font-color, #NoteText, #NoteTodos, #NoteImage, #NoteVideo {
     display: none;
 }
 
@@ -59,6 +70,12 @@ main {
     flex: 0 0 60px;
 }
 
+/* Email and notes apps */
+
+.content-container {
+    min-height: 100vh;
+}
+
 /* Email NavBar */
 
 .email-nav {
@@ -66,7 +83,101 @@ main {
     flex: 0 0 150px;
 }
 
+/* Email App  */
 
+section {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+main {
+    overflow-y: auto;
+}
+
+.inbox>* {
+    display: flex;
+    justify-content: space-between;
+}
+
+.read {
+    margin-block-end: 20px;
+}
+
+.not-read {
+    font-weight: bold;
+    margin-block-end: 20px;
+}
+
+.star {
+    background-color: rgb(255, 255, 0);
+}
+
+/* Note app */
+
+.add-note-container {
+    min-height: 60px;
+    min-width: 650px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+}
+
+.add-input {
+    min-height: inherit;
+    padding: 10px;
+    border-radius: inherit;
+    background-color: inherit
+}
+
+.types-container {
+    min-height: inherit
+}
+
+.types-container>* {
+    margin-inline-end: 8px;
+    min-height: 50px;
+    min-width: 50px;
+    border-radius: 8px;
+}
+
+.type-active {
+    background-color: rgb(241, 243, 244);
+}
+
+.save-btn {
+    color: #757575;
+    margin-inline-end: 5px;
+    border-radius: 7px;
+    padding: 2px;
+    width: 60px;
+    height: 50px;
+}
+
+.save-btn:hover {
+    background-color:rgb(241, 243, 244);
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.notes-container {
+    columns: 200px 3;
+    break-after: avoid;
+}
+
+.notes-container>* {
+    max-height: 200px
+}
+
+li img {
+    max-width: 200px
+}
+
+.image-note {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Layout */
 
@@ -80,39 +191,62 @@ main {
     flex-direction: column;
 }
 
-/* Email App  */
-.read{
+.align-center {
+    align-items: center;
+}
+
+.full {
+    flex: 1;
+}
+
+.totally-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Search input helper */
+
+.search-container {
+    min-width: 20%;
+    min-height: 45px;
+    background-color: #f1f3f4;
+    border-radius: 7px;
+    overflow: hidden;
+    position: relative;
+    margin-block-start: 20px;
     margin-block-end: 20px;
 }
 
-.not-read {
-    font-weight: bold;
-    margin-block-end: 20px;
+.search-icon {
+    margin-inline-start: 7px;
 }
 
-.star{
-    background-color: rgb(255, 255, 0);
+.search-input {
+    flex: 1;
+    border: none;
+    padding: 0;
+    margin-inline-start: 9px;
+    margin-inline-end: 5px;
+    min-height: 50px;
+    background-color: #F1F3F4;
 }
 
-/* Notes app */
-.done {
-    text-decoration: line-through;
+.search-input:focus+.search-x {
+    opacity: 1;
 }
 
-.notes-container{
-    columns:200px 3;
-    break-after: avoid;
+.search-x {
+    height: 15px;
+    width: 12px;
+    position: absolute;
+    right: 15px;
+    opacity: 0;
 }
 
-.notes-container>*{
-max-height:200px
-}
-
-li img {
-    max-width:200px
-}
-
-.image-note{
-    display:flex;
-    flex-direction: column;
+input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer;
+    margin-inline-end: 10px;
+    opacity: 0;
+    z-index: 1;
 }

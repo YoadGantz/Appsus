@@ -4,7 +4,7 @@ export default class EmailDetail extends React.Component {
     render() {
         return <div>
             <span onClick={this.props.goBack}>BACK</span>
-            <img onClick={this.props.onCreateNote} title = "Save to notes" height="20px" src="../../../imgs/icons/send.svg"/>
+            <img onClick={this.props.onCreateNote} title = "Save to note" height="20px" src="../../../imgs/icons/send-note.svg"/>
             <img onClick={this.props.delete} height="20px" src="../imgs/icons/delete.svg"/>
             <div>
                 <p>{this.props.email.sentAt}</p>

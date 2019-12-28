@@ -1,3 +1,5 @@
+import NoteTypeOptions from './NoteTypeOptions.jsx'
+
 export default class AddNote extends React.Component {
     state = {
         type: 'NoteText',
@@ -20,35 +22,14 @@ export default class AddNote extends React.Component {
 
     render() {
         return <div>
-            <div>
-                <input type="text" placeholder="info"
-                    name="info"
-                    onChange={this.inputChange} value={this.state.infoTxt}></input>
-                <button onClick={this.onSave}>Save</button>
+            <div className="add-note-container flex align-center">
+                <input className="add-input full" type="text" placeholder="Take a note..." name="info"
+                    onChange={this.inputChange} 
+                    value={this.state.infoTxt}>
+                </input>
+                <NoteTypeOptions updateNoteType={this.updateNoteType}></NoteTypeOptions>
+                <button className="save-btn" onClick={this.onSave}>Save</button>
             </div>
-
-            {/* set type labels */}
-            {/* create another comp for the labels. */}
-
-            <label htmlFor="NoteText">
-                <img height="20px" src="../imgs/icons/txt.svg" />
-            </label>
-            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteText" id="NoteText" />
-
-            <label htmlFor="NoteTodos">
-                <img height="20px" src="../imgs/icons/todo.svg" />
-            </label>
-            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteTodos" id="NoteTodos" />
-
-            <label htmlFor="NoteImage">
-                <img height="20px" src="../imgs/icons/img.svg"/>
-            </label>
-            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteImage" id="NoteImage"/>
-
-            <label htmlFor="NoteVideo">
-                    <img height="20px" src="../imgs/icons/vid.svg"/>
-            </label>
-            <input onChange={this.updateNoteType} name="inputType" type="radio" value="NoteVideo" id="NoteVideo"/>
         </div>
     }
 }
