@@ -60,6 +60,7 @@ export default class StarredPage extends React.Component {
         emailService.updateIsReadSelected()
             .then((selectedUnRead) => {
                 this.setState({ selectedUnRead })
+                this.getUnReadCount()
                 this.loadEmails()
             })
     }

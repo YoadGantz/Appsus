@@ -60,6 +60,7 @@ export default class InboxPage extends React.Component {
         emailService.updateIsReadSelected()
             .then((selectedUnRead) => {
                 this.setState({ selectedUnRead })
+                this.getUnReadCount()
                 this.loadEmails()
             })
     }
@@ -76,8 +77,9 @@ export default class InboxPage extends React.Component {
     updateIsStarredSelected = () => {
         emailService.updateIsStarredSelected()
             .then((selectedUnStar) => {
-                this.setState({ selectedUnStar })
-                this.loadEmails()
+                this.setState({ selectedUnStar }).then(() => {
+                    this.loadEmails()
+                })
             }
             )
     }

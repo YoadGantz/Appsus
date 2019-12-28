@@ -29,7 +29,7 @@ export default class EmailApp extends React.Component {
                     <Route component={ComposeEmail} path="/email/compose"></Route>
                     <Route render={(props) => <InboxPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/inbox" exact></Route>
                     <Route render={(props) => <StarredPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/starred" exact></Route>
-                    <Route component={SentPage} path="/email/sent"></Route>
+                    <Route render={(props) => <SentPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/sent" exact></Route>
                     <Route render={(props) => <EmailDetailPage {...props} setUnReadCount={this.setUnReadCount} />} path="/email/:id" exact></Route>
                 </Switch>
             </Router>
