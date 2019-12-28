@@ -21,6 +21,7 @@ export default class EmailPreview extends React.Component {
                     <span>
                         <LongTxt onExpand={this.onExpand} text={email.subject + email.body} shortLength={80}>
                         </LongTxt>
+                        <img onClick={this.onExpand} height="20px" src="../../imgs/icons/expand.svg" />
                         {email.sentAt}
                     </span>
         </li>
