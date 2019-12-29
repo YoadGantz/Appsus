@@ -5,6 +5,6 @@ export default class AddStarSelection extends React.Component {
     }
 
     render() { 
-        return <div onClick={this.updateSelected}> {this.props.selectedUnStar ? "Add a star" : "Remove a star"}  </div >
+        return <div className="btn" onClick={this.updateSelected}> {this.props.selectedUnStar ? "Add a star" : "Remove a star"}  </div >
     }
 }

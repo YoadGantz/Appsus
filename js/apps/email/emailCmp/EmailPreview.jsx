@@ -16,23 +16,23 @@ export default class EmailPreview extends React.Component {
     showSentAtFormatted = (email) => {
         let date = new Date(email.sentAt)
         if (date.getDate() === new Date().getDate()) return `${date.getHours()}:${date.getMinutes()}`
-        return `${date.getDate()}/${date.getMonth()+1}`
+        return `${date.getDate()}/${date.getMonth() + 1}`
     }
 
     render() {
         const email = this.props.email;
         const sentAt = this.showSentAtFormatted(email)
-        return <li className={(email.isRead) ? 'read flex align-center' : 'not-read flex align-center' }>
-                    <input type="checkbox" onClick={this.onSelect} />
-                    <img className={(email.isStarred) ? 'star' : 'un-star'} height="16px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
-                    <span className="preview-container flex full">
-                        <span className="sent-by">{email.sentBy}</span>
-                        <span className="email-subject">{email.subject}</span>
-                        <LongTxt onExpand={this.onExpand} text={email.body} shortLength={50}>
-                        </LongTxt>
-                    </span>
-                        <img onClick={this.onExpand} height="20px" src="../../imgs/icons/expand.svg" />
-                        {sentAt}
+        return <li className={(email.isRead) ? 'read flex' : 'not-read flex'}>
+            <input className="btn" type="checkbox" onClick={this.onSelect} />
+            <img className={(email.isStarred) ? 'star btn' : 'un-star btn'} height="16px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
+            <span className="preview-container flex full">
+                <div className="sent-by">{email.sentBy}</div>
+                <div className="email-subject">{email.subject}</div>
+                <LongTxt onExpand={this.onExpand} text={email.body} shortLength={50}>
+                </LongTxt>
+            </span>
+            <img className="open-mail btn" onClick={this.onExpand} height="20px" src="../../imgs/icons/expand.svg" />
+            {sentAt}
         </li>
     }
 }

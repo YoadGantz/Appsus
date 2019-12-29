@@ -95,7 +95,7 @@ export default class InboxPage extends React.Component {
     }
 
     render() {
-        return <main>
+        return <main className="email-page-container">
             <div className="settings-container flex space-between">
                 <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
                 <div className="flex space-between">

@@ -5,6 +5,6 @@ export default class ReadStatusSelection extends React.Component {
     }
 
     render() {//closed envelope for mark as unread 
-        return <div onClick={this.updateSelected} >{this.props.selectedUnRead ? "Mark as read" : "Mark as unread"} </div >
+        return <div className="btn" onClick={this.updateSelected} >{this.props.selectedUnRead ? "Mark as read" : "Mark as unread"} </div >
     }
 }
