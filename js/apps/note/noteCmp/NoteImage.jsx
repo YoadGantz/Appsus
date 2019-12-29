@@ -8,7 +8,7 @@ export default function NoteImage(props) {
         <li class-name="note-container column totally-center" style={{ backgroundColor: bgc, color: color }}>
             <p className="note-title"> {props.note.info.title}</p>
             <div className="note-content flex justify-center full">
-                <img height="200px" src={props.note.info.txtInput} />
+                <img className="note-img" src={props.note.info.txtInput} />
             </div>
             <div className="controls-container">
                 <NoteEditControl

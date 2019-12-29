@@ -22,12 +22,12 @@ export default class EmailPreview extends React.Component {
     render() {
         const email = this.props.email;
         const sentAt = this.showSentAtFormatted(email)
-        return <li className={(email.isRead) ? 'read' : 'not-read'}>
+        return <li className={(email.isRead) ? 'read flex align-center' : 'not-read flex align-center' }>
                     <input type="checkbox" onClick={this.onSelect} />
-                    <img className={(email.isStarred) ? 'star' : 'un-star'} height="10px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
+                    <img className={(email.isStarred) ? 'star' : 'un-star'} height="16px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
                     <span className="preview-container flex full">
-                        <span>{email.sentBy}</span>
-                        <span>{email.subject}</span>
+                        <span className="sent-by">{email.sentBy}</span>
+                        <span className="email-subject">{email.subject}</span>
                         <LongTxt onExpand={this.onExpand} text={email.body} shortLength={50}>
                         </LongTxt>
                     </span>

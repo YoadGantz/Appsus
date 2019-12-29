@@ -86,24 +86,29 @@ h2 {
     /* padding: 15px 10px; */
 }
 
-.email-nav-links>*:hover{
+.email-nav-links>*:hover {
     background-color: white;
 }
 
-.email-nav-links>*:first-child{
+.email-nav-links>*:first-child {
     margin-block-start: 20px;
 }
-.email-nav-links>*:not(:last-child){
+
+.email-nav-links>*:not(:last-child) {
     margin-block-end: 20px;
 }
 
-a.nav-link{
+a.nav-link {
     padding: 15px 10px;
-    width:140px;
-
+    width: 140px;
 }
 
 /* Email App  */
+
+.settings-container {
+    padding: 1.5rem 1rem;
+    align-items: center;
+}
 
 section {
     flex-grow: 1;
@@ -119,6 +124,14 @@ main {
     justify-content: space-between;
 }
 
+.sent-by {
+    min-width: 130px;
+}
+
+.email-subject {
+    width: 250px;
+}
+
 .read {
     margin-block-end: 20px;
 }
@@ -126,6 +139,10 @@ main {
 .not-read {
     font-weight: bold;
     margin-block-end: 20px;
+}
+
+.read>*, .not-read>* {
+    display: inline-block;
 }
 
 .star {
@@ -193,7 +210,8 @@ main {
 /* Notes */
 
 .notes-container {
-    columns: 200px 4;
+    columns: 200px 3;
+    column-gap: 20px;
     padding: 0 20px;
 }
 
