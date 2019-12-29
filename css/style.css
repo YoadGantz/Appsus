@@ -48,24 +48,44 @@ h2 {
     margin: 0 20px 20px;
 }
 
-/* Helpers */
-
-.active {
-    color: white;
-    background-color: blue;
-}
-
-/* Radio button hide Helper */
-
-#bgc, #font-color, #NoteText, #NoteTodos, #NoteImage, #NoteVideo {
-    display: none;
-}
-
 /* Main NavBar */
 
 .app-nav {
-    background-color: rgb(243, 245, 141);
+    background-color: #dedede;
     flex: 0 0 60px;
+}
+
+.nav-ul {
+    justify-content: flex-end;
+}
+
+a.main-nav-link {
+    height: 60px;
+    min-width: 100px;
+    margin-inline-end: 10px;
+    text-align: center;
+    transition: color 0.2s;
+}
+
+a.main-nav-link:hover{
+    color: white;
+}
+
+/* HomePage */
+
+.homepage-container {
+    flex-grow: 1;
+    background-image: url(../imgs/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: bottom;
+}
+
+.homepage-container>* {
+    margin: 20px 10%;
+    font-size: 2rem;
+    text-transform: uppercase;
 }
 
 /* Email and notes apps */
@@ -194,6 +214,8 @@ main {
     background-color: rgb(241, 243, 244);
 }
 
+
+
 .save-btn {
     color: #757575;
     margin-inline-end: 5px;
@@ -235,14 +257,20 @@ main {
 
 .note-title {
     margin: 0;
-    padding: 10px
+    padding-block-end: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .note-content.txt {
     padding-inline-start: 20px;
     padding-inline-end: 20px;
     padding-block-start: 20px;
-    font-weight: bold;
+}
+
+.note-content.img, .note-content.vid {
+    padding-block-end: 0px;
 }
 
 .note-img {
@@ -306,11 +334,12 @@ main {
 
 .app-container.book-app {
     margin: auto;
-    padding:20px;
+    padding: 20px;
 }
 
 /* Book gallery */
-.books-title{
+
+.books-title {
     margin-block-start: 0;
 }
 
@@ -328,15 +357,15 @@ main {
     border-radius: 8px;
 }
 
-.book-controls{
-padding-block-end: 20px;
+.book-controls {
+    padding-block-end: 20px;
 }
 
-.book-controls>*{
+.book-controls>* {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     margin-inline-end: 20px;
-    padding:10px;
+    padding: 10px;
     max-width: 200px
 }
 
@@ -348,7 +377,12 @@ padding-block-end: 20px;
     color: green
 }
 
-/* Layout */
+/* Helpers */
+
+.active {
+    background-color: rgb(236, 236, 236);
+    font-weight: bold;
+}
 
 /* flex-helpers */
 
@@ -449,4 +483,16 @@ input[type="search"]::-webkit-search-cancel-button {
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+/* Radio button hide Helper */
+
+#bgc, #font-color, #NoteText, #NoteTodos, #NoteImage, #NoteVideo {
+    display: none;
+}
+
+/* hidden-helper */
+
+.hidden {
+    display: none;
 }
