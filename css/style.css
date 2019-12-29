@@ -310,6 +310,9 @@ main {
 }
 
 /* Book gallery */
+.books-title{
+    margin-block-start: 0;
+}
 
 .books-container {
     columns: 200px 4;
@@ -317,7 +320,7 @@ main {
 
 .book-preview {
     break-inside: avoid;
-    border: 1px solid #757575;
+    border: 1px solid #e0e0e0;
     text-align: center;
     margin-block-end: 20px;
     padding-block-start: 10px;
@@ -326,13 +329,15 @@ main {
 }
 
 .book-controls{
-
+padding-block-end: 20px;
 }
 
 .book-controls>*{
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     margin-inline-end: 20px;
+    padding:10px;
+    max-width: 200px
 }
 
 .red-font {
