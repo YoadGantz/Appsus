@@ -24,6 +24,11 @@ a {
     color: inherit;
 }
 
+select {
+    border: none;
+    outline: none;
+}
+
 input {
     border: none;
     font-family: Raleway;
@@ -46,6 +51,10 @@ img {
 
 h2 {
     margin: 0 20px 20px;
+}
+
+.btn {
+    cursor: pointer;
 }
 
 /* Helpers */
@@ -71,23 +80,31 @@ h2 {
 /* Email and notes apps */
 
 .content-container {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* Email NavBar */
 
 .email-nav-container {
     flex: 0 0 150px;
-    background-color: rgb(236, 234, 234);
-    cursor: pointer;
+    background-color: rgb(228, 228, 228);
+}
+
+.email-nav-link {
+    width: 100%;
+    height: 100%;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
 }
 
 .email-nav-links>* {
+    
     /* padding: 15px 10px; */
 }
 
 .email-nav-links>*:hover {
-    background-color: white;
+    background-color: rgba(252, 252, 252, 0.5);
 }
 
 .email-nav-links>*:first-child {
@@ -105,6 +122,36 @@ a.nav-link {
 
 /* Email App  */
 
+textarea {
+    outline: none;
+    border: none;
+}
+
+.compose-subject {
+    margin-block-end: 20px;
+}
+
+.compose-body {
+    flex-grow: 1;
+}
+
+.send-mail {
+    width: 100px;
+    height: 40px;
+    align-self: center;
+}
+
+.compose-page {
+    flex-grow: 1;
+    padding: 20px;
+    margin: 20px;
+}
+
+.email-page-container {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
 .settings-container {
     padding: 1.5rem 1rem;
     align-items: center;
@@ -115,25 +162,48 @@ section {
     overflow: hidden;
 }
 
-main {
-    overflow-y: auto;
-}
-
 .inbox>* {
     display: flex;
     justify-content: space-between;
 }
 
 .sent-by {
+    margin-inline-end: 30px;
     min-width: 130px;
 }
 
 .email-subject {
-    width: 250px;
+    min-width: 400px;
+    margin-inline-end: 10px;
+    text-overflow: clip;
 }
+
+.email-body {
+    flex-grow: 0.5;
+}
+
+.email-nav-link {
+    display: block;
+}
+
+
 
 .read {
     margin-block-end: 20px;
+}
+
+.starred, .compose, .inbox, .sent {
+    height: 50px;
+    width: 140px;
+    border: 1px solid #F1F3F4;
+    border-radius: 10px;
+}
+
+
+
+.email-link-active {
+    background-color: white;
+    border-radius: 10px;
 }
 
 .not-read {
@@ -143,6 +213,10 @@ main {
 
 .read>*, .not-read>* {
     display: inline-block;
+}
+
+.open-mail {
+    margin-inline-end: 20px;
 }
 
 .star {
@@ -304,35 +378,14 @@ main {
 
 /* Book App */
 
-.app-container.book-app {
-    margin: auto;
-    padding:20px;
-}
-
 /* Book gallery */
 
-.books-container {
-    columns: 200px 4;
-}
-
 .book-preview {
-    break-inside: avoid;
-    border: 1px solid #757575;
+    border: 1px solid black;
     text-align: center;
-    margin-block-end: 20px;
-    padding-block-start: 10px;
+    margin: 10px;
     width: 200px;
     border-radius: 8px;
-}
-
-.book-controls{
-
-}
-
-.book-controls>*{
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-inline-end: 20px;
 }
 
 .red-font {
@@ -393,7 +446,7 @@ main {
 }
 
 .search-icon {
-    margin-inline-start: 10px;
+    margin-inline-start: 7px;
 }
 
 .search-input {
@@ -424,6 +477,19 @@ input[type="search"]::-webkit-search-cancel-button {
     opacity: 0;
     z-index: 1;
 }
+
+/* check-box helper
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    cursor:pointer;
+    -webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+} */
 
 /* Border-helper */
 

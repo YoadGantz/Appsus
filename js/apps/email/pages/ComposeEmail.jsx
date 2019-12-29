@@ -35,13 +35,13 @@ export default class ComposeEmail extends React.Component {
     }
 
     render() {
-        return <main className="flex column">
+        return <main className="compose-page border flex column">
             <header>New Message</header>
             <input onChange={this.inputChange} type="text" placeholder="To" name="to" value={this.state.to}></input>
             <input onChange={this.inputChange} type="text" placeholder="Cc" name="cc" value={this.state.cc}></input>
-            <input onChange={this.inputChange} type="text" placeholder="Subject" name="subject" value={this.state.subject}></input>
-            <textarea onChange={this.inputChange} name="body" value={this.state.body}></textarea>
-            <button onClick={this.onSend}>Send</button>
+            <input className="compose-subject" onChange={this.inputChange} type="text" placeholder="Subject" name="subject" value={this.state.subject}></input>
+            <textarea className="compose-body" onChange={this.inputChange} name="body" placeholder="Email Body" value={this.state.body}></textarea>
+            <button className="send-mail border" onClick={this.onSend}>Send</button>
         </main>
     }
 }

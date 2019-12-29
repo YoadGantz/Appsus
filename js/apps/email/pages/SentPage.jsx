@@ -95,21 +95,23 @@ export default class SentPage extends React.Component {
     }
 
     render() {
-        return <main>
-            <div className="settings-container">
+        return <main className="email-page-container">
+            <div className="settings-container flex space-between">
                 <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
-                <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
-                <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
-                <ReadStatusSelection selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusSelection>
+                <div className="flex space-between">
+                    <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
+                    <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
+                    <ReadStatusSelection selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusSelection>
+                    <DeleteSelection
+                        deleteSelected={this.deleteSelected}>
+                    </DeleteSelection>
+                    <AddStarSelection
+                        selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}>
+                    </AddStarSelection>
+                </div>
             </div>
-            <DeleteSelection 
-                deleteSelected={this.deleteSelected}>
-            </DeleteSelection>
-            <AddStarSelection
-                selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}>
-            </AddStarSelection>
-            <EmailList 
-                goToDetails={this.goToDetails} 
+            <EmailList
+                goToDetails={this.goToDetails}
                 toggleStarred={this.toggleStarred}
                 toggleSelection={this.toggleSelection}
                 emails={this.state.emails}>
