@@ -6,7 +6,7 @@ export default function NoteImage(props) {
     let color = style.color || 'black';
     return <React.Fragment>
         <li class-name="note-container column totally-center" style={{ backgroundColor: bgc, color: color }}>
-            <div class="note-content flex justify-center full img">
+            <div className="note-content flex justify-center full">
             <img height="200px" src={props.note.info.txtInput} />
             </div>
             <div className="controls-container">

@@ -1,4 +1,4 @@
-export default class Home extends React.Component {
+export default class AppsusHome extends React.Component {
     render() {
         return <div>This will be our homepage</div>
     }

@@ -12,6 +12,9 @@ export default function NavBar() {
             <li>
                 <NavLink activeClassName="active" to='/note'>Notes</NavLink>
             </li>
+            <li>
+                <NavLink activeClassName="active" to='/book'>Books</NavLink>
+            </li>
         </ul>
     </nav>
 }
