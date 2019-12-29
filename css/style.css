@@ -19,16 +19,6 @@ body {
     margin: 0;
 }
 
-ul {
-    margin: 0;
-    padding: 20px;
-}
-
-li {
-    list-style-type: none;
-    margin-bottom: 20px;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -54,8 +44,8 @@ img {
     object-fit: cover;
 }
 
-h2{
-    margin: 0 20px 20px; 
+h2 {
+    margin: 0 20px 20px;
 }
 
 /* Helpers */
@@ -86,9 +76,31 @@ h2{
 
 /* Email NavBar */
 
-.email-nav {
-    background-color: khaki;
+.email-nav-container {
     flex: 0 0 150px;
+    background-color: rgb(236, 234, 234);
+    cursor: pointer;
+}
+
+.email-nav-links>* {
+    /* padding: 15px 10px; */
+}
+
+.email-nav-links>*:hover{
+    background-color: white;
+}
+
+.email-nav-links>*:first-child{
+    margin-block-start: 20px;
+}
+.email-nav-links>*:not(:last-child){
+    margin-block-end: 20px;
+}
+
+a.nav-link{
+    padding: 15px 10px;
+    width:140px;
+
 }
 
 /* Email App  */
@@ -122,8 +134,8 @@ main {
 
 /* Note app */
 
-.app-container{
-    max-width:1100px;
+.app-container {
+    max-width: 1100px;
     padding-block-start: 20px;
 }
 
@@ -132,7 +144,7 @@ main {
 .add-note-container {
     min-height: 80px;
     max-width: 650px;
-    margin:auto;
+    margin: auto;
     margin-block-end: 20px;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
     border-radius: 8px;
@@ -146,8 +158,8 @@ main {
     background-color: inherit
 }
 
-.app-container .search-container{
-    margin:auto;
+.app-container .search-container {
+    margin: auto;
 }
 
 .types-container {
@@ -202,6 +214,11 @@ main {
     padding-block-end: 20px;
 }
 
+.note-title {
+    margin: 0;
+    padding: 10px
+}
+
 .note-content.txt {
     padding-inline-start: 20px;
     padding-inline-end: 20px;
@@ -209,8 +226,9 @@ main {
     font-weight: bold;
 }
 
-.note-content.img {
-    flex-basis: 100%;
+.note-img {
+    width: 100%;
+    height: 100%;
 }
 
 .controls-container {
@@ -266,6 +284,7 @@ main {
 }
 
 /* Book App */
+
 /* Book gallery */
 
 .book-preview {
@@ -276,11 +295,12 @@ main {
     border-radius: 8px;
 }
 
-.red-font{
-    color:red
+.red-font {
+    color: red
 }
-.green-font{
-    color:green
+
+.green-font {
+    color: green
 }
 
 /* Layout */
@@ -315,10 +335,14 @@ main {
     justify-content: center;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
 /* Search input helper */
 
 .search-container {
-    max-width:300px;
+    max-width: 300px;
     min-height: 45px;
     background-color: #f1f3f4;
     border-radius: 8px;
@@ -385,4 +409,12 @@ input[type="checkbox"] {
 
 .btn {
     cursor: pointer;
+}
+
+/* List helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }

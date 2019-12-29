@@ -16,6 +16,7 @@ export default class NoteText extends React.Component {
         let bgc = style.backgroundColor || 'rgba(0,0,0,0)';
         let color = style.color || 'black';
         return <li className="note-container flex column totally-center" style={{ backgroundColor: bgc, color: color }}><div className="note-content txt full">
+            <p className="note-title"> {this.props.note.info.title}</p>
             <LongTxt onExpand={this.onExpand} text={this.props.note.info.txtInput} shortLength={50}>
             </LongTxt>
         </div>

@@ -15,6 +15,10 @@ export default class InboxPage extends React.Component {
         this.getNoteFromUrl();
     }
 
+    onTodoDone = (todoId, noteId) => {
+        noteService.toggleIsDone(todoId, noteId).then(this.loadNotes)
+    }
+
     getNoteFromUrl = () => {
         let noteType = 'NoteText'
         let noteInfo = this.props.history.location.search
@@ -64,9 +68,10 @@ export default class InboxPage extends React.Component {
 
     render() {
         return <div className="app-container">
-                <AddNote onAddNote={this.onAddNote}></AddNote>
-                <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
+            <AddNote onAddNote={this.onAddNote}></AddNote>
+            <Search filterBy={this.state.filterBy} handleChange={this.handleChange}></Search>
             <NoteList
+                onTodoDone={this.onTodoDone}
                 togglePin={this.onTogglePin}
                 onChangeColor={this.onChangeColor}
                 onChangeBGColor={this.onChangeBGColor}

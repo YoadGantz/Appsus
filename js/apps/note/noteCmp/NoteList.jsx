@@ -15,6 +15,7 @@ export default class NoteList extends React.Component { //switch to function may
         return (
             <React.Fragment>
                 <PinnedNoteList
+                    onTodoDone={this.props.onTodoDone}
                     onChangeBGColor={this.props.onChangeBGColor}
                     delete={this.props.delete}
                     togglePin={this.props.togglePin}
@@ -23,6 +24,7 @@ export default class NoteList extends React.Component { //switch to function may
                     onCreateEmail={this.props.onCreateEmail}>
                 </PinnedNoteList>
                 <UnpinnedNoteList
+                    onTodoDone={this.props.onTodoDone}
                     onChangeBGColor={this.props.onChangeBGColor}
                     delete={this.props.delete}
                     togglePin={this.props.togglePin}

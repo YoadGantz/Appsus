@@ -7,6 +7,7 @@ export default class UnpinnedNoteList extends React.Component {
             <ul className="notes-container">
                 {this.props.notes.map(note =>
                     <DynamicNotePrev
+                        onTodoDone={this.props.onTodoDone}
                         key={note.id}
                         onChangeBGColor={this.props.onChangeBGColor}
                         delete={this.props.delete}

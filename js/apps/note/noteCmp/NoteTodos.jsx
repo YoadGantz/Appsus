@@ -2,9 +2,9 @@ import NoteEditControl from "./NoteEditControl.jsx"
 export default class NoteTodos extends React.Component {
     state = { currTodo: null }
 
-    todoDone = (todo) => {
-        todo.isDone = !todo.isDone
+    onTodoDone = (todo, todoId, noteId) => {
         this.setState({ currTodo: todo })
+        this.props.onTodoDone(todoId, noteId)
     }
 
     render() {
@@ -14,11 +14,12 @@ export default class NoteTodos extends React.Component {
         let color = style.color || 'black';
         return <React.Fragment>
             <li class-name="note-container flex column totally-center"
-            style={{ backgroundColor: bgc, color: color }}>
+                style={{ backgroundColor: bgc, color: color }}>
+                <p className="note-title"> {this.props.note.info.title}</p>
                 <ul className="note-content full">{todos.map((todo, i) => {
 
                     return <li className={(todo.isDone ? 'done' : '')} key={i}>{todo.txtInput}
-                        <input type="checkbox" onClick={() => this.todoDone(todo)} />
+                        <input type="checkbox" checked={todo.isDone} onClick={() => this.props.onTodoDone(todo.id, this.props.note.id)}></input>
                     </li>
 
                 })}

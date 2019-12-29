@@ -4,9 +4,6 @@ export default class LongTxt extends React.Component {
         isLongTxtShown: this.props.isLongTxtShown
     }
 
-    componentDidMount() {
-    }
-
     getText = () => {
         return (this.state.isLongTxtShown) ? this.props.text : this.props.text.substring(0, this.props.shortLength);
     }

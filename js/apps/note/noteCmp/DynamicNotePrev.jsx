@@ -10,6 +10,7 @@ export default class DynamicNotePrev extends React.Component {
         const Cmp = this.getComponent();
         return <React.Fragment>
             <Cmp
+                onTodoDone={this.props.onTodoDone}
                 togglePin={this.props.togglePin}
                 onChangeBGColor={this.props.onChangeBGColor}
                 delete={this.props.delete}
