@@ -193,7 +193,7 @@ main {
 /* Notes */
 
 .notes-container {
-    columns: 200px 4;
+    columns: 260px 3;
     padding: 0 20px;
 }
 
@@ -202,7 +202,8 @@ main {
 }
 
 .notes-container>* {
-    max-width: 260px;
+    margin-block-end: 20px;
+    max-width:260px;
     min-height: 100px;
     break-inside: avoid;
     overflow: hidden;
