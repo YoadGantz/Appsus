@@ -62,8 +62,6 @@ function toggleIsDone(todoId, noteId) {
     gNotes = gNotes.map(currNote => {
         return (currNote.id === note.id) ? note : currNote
     })
-    console.log(gNotes);
-
     saveNotes()
     return Promise.resolve(todo)
 }

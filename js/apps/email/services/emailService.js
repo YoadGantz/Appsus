@@ -152,7 +152,6 @@ function deleteSelected() {
 
 
 function createEmail(sentBy, subject, body, isRead, sentAt) {
-    console.log(sentBy)
     const email = {
         id: utils.getRandomId(),
         sentBy,

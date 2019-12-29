@@ -94,7 +94,6 @@ export default class StarredPage extends React.Component {
     }
 
     goToDetails = (emailId) => {
-        console.log(emailId)
         this.props.history.push(`/email/${emailId}`)
     }
 

@@ -4,7 +4,6 @@ export default class NoteTypeOptions extends React.Component {
     }
     updateActive = (ev) => {
         let currActive = ev.target.value
-        console.log(currActive)
         this.setState({
             active: currActive
         })
