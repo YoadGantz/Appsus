@@ -28,7 +28,7 @@ export default class BookAdd extends React.Component {
                     <ul>
                         {this.state.googleBooks.map((googleBook, i) => {
                             return <li key={i}>{googleBook.title}
-                                        <button onClick={() => this.onAddGoogleBook(googleBook)}>+</button>
+                                        <button onClick={() => this.onAddGoogleBook(googleBook)} title="Add this book">+</button>
                                     </li>})}
                     </ul>
                 </div>

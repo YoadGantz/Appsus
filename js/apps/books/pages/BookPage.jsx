@@ -31,10 +31,12 @@ export default class BooksApp extends React.Component {
     render() {
         return (
             <section>
-                <h1>Books</h1>
+                <div className="app-container book-app totally-center column">
+                <h1 className="books-title">Books</h1>
                 <BookAdd></BookAdd>
                 <Filter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter}></Filter>
                 <BookList books={this.state.books}></BookList>
+                </div>
             </section>
         )
     }

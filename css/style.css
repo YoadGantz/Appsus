@@ -86,21 +86,21 @@ h2 {
     /* padding: 15px 10px; */
 }
 
-.email-nav-links>*:hover{
+.email-nav-links>*:hover {
     background-color: white;
 }
 
-.email-nav-links>*:first-child{
+.email-nav-links>*:first-child {
     margin-block-start: 20px;
 }
-.email-nav-links>*:not(:last-child){
+
+.email-nav-links>*:not(:last-child) {
     margin-block-end: 20px;
 }
 
-a.nav-link{
+a.nav-link {
     padding: 15px 10px;
-    width:140px;
-
+    width: 140px;
 }
 
 /* Email App  */
@@ -203,7 +203,7 @@ main {
 
 .notes-container>* {
     margin-block-end: 20px;
-    max-width:260px;
+    max-width: 260px;
     min-height: 100px;
     break-inside: avoid;
     overflow: hidden;
@@ -286,14 +286,35 @@ main {
 
 /* Book App */
 
+.app-container.book-app {
+    margin: auto;
+    padding:20px;
+}
+
 /* Book gallery */
 
+.books-container {
+    columns: 200px 4;
+}
+
 .book-preview {
-    border: 1px solid black;
+    break-inside: avoid;
+    border: 1px solid #757575;
     text-align: center;
-    margin: 10px;
+    margin-block-end: 20px;
+    padding-block-start: 10px;
     width: 200px;
     border-radius: 8px;
+}
+
+.book-controls{
+
+}
+
+.book-controls>*{
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-inline-end: 20px;
 }
 
 .red-font {
@@ -354,7 +375,7 @@ main {
 }
 
 .search-icon {
-    margin-inline-start: 7px;
+    margin-inline-start: 10px;
 }
 
 .search-input {
@@ -385,19 +406,6 @@ input[type="search"]::-webkit-search-cancel-button {
     opacity: 0;
     z-index: 1;
 }
-
-/* check-box helper
-input[type="checkbox"] {
-    -webkit-appearance: none;
-    cursor:pointer;
-    -webkit-appearance: none;
-	background-color: #fafafa;
-	border: 1px solid #cacece;
-	padding: 9px;
-	border-radius: 3px;
-	display: inline-block;
-	position: relative;
-} */
 
 /* Border-helper */
 
