@@ -22,17 +22,29 @@ export default class EmailPreview extends React.Component {
     render() {
         const email = this.props.email;
         const sentAt = this.showSentAtFormatted(email)
-        return <li className={(email.isRead) ? 'read flex' : 'not-read flex'}>
-            <input className="btn" type="checkbox" onClick={this.onSelect} />
-            <img className={(email.isStarred) ? 'star btn' : 'un-star btn'} height="16px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
-            <span className="preview-container flex full">
-                <div className="sent-by">{email.sentBy}</div>
-                <div className="email-subject">{email.subject}</div>
-                <LongTxt onExpand={this.onExpand} text={email.body} shortLength={50}>
-                </LongTxt>
-            </span>
-            <img className="open-mail btn" onClick={this.onExpand} height="20px" src="../../imgs/icons/expand.svg" />
-            {sentAt}
-        </li>
+        return (
+            <tr className={(email.isRead) ? 'read' : 'not-read'}>
+                <td>
+                    <input className="btn" type="checkbox" onClick={this.onSelect} />
+                </td>
+                <td>
+                    <img className={(email.isStarred) ? 'star btn' : 'un-star btn'} height="16px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
+                </td>
+                <td className="sent-by">
+                    {email.sentBy}
+                </td>
+                <td className="email-subject">
+                    {email.subject}
+                </td>
+                <td>
+                    <LongTxt onExpand={this.onExpand} text={email.body} shortLength={30}></LongTxt>
+                </td>
+                <td>
+                    <img title="Expand" className="open-mail btn" onClick={this.onExpand} height="20px" src="../../imgs/icons/expand.svg" />
+                </td>
+                <td>
+                    {sentAt}
+                </td>
+            </tr>)
     }
 }

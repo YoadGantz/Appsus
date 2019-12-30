@@ -9,7 +9,8 @@ const history = createBrowserHistory()
 
 export default class EmailApp extends React.Component {
     render() {
-        return (<div className="note-app flex column align-center">
+        return (
+        <div className="note-app flex column align-center">
             <UserMsg></UserMsg>
             <Router history={history}>
                 <Switch>

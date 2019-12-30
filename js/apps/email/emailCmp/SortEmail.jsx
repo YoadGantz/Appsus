@@ -4,7 +4,7 @@ export default function SortEmail(props) {
         let input = ev.target.value
         props.handleChange(input)
     }
-    return <select className="border btn" name="sortBy" id="sortBy" onChange={inputChange}>
+    return <select className="btn" name="sortBy" id="sortBy" onChange={inputChange}>
         <option className="border" value="date">Date</option>
         <option className="border" value="subject">Subject</option>
     </select>

@@ -79,7 +79,6 @@ export default class InboxPage extends React.Component {
                 notes={this.state.notes}
                 onCreateEmail={this.onCreateEmail}>
             </NoteList>
-
         </div>
     }
 }

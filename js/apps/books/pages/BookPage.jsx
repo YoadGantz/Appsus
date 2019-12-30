@@ -30,14 +30,13 @@ export default class BooksApp extends React.Component {
 
     render() {
         return (
-            <section>
-                <div className="app-container book-app totally-center column">
+            <div className="app-container">
                 <h1 className="books-title">Books</h1>
                 <BookAdd></BookAdd>
                 <Filter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter}></Filter>
                 <BookList books={this.state.books}></BookList>
-                </div>
-            </section>
+            </div>
+
         )
     }
 }

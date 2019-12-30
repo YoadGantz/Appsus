@@ -95,15 +95,20 @@ export default class InboxPage extends React.Component {
 
     render() {
         return <main className="email-page-container">
-            <div className="settings-container flex space-between">
-                <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
-                <div className="flex space-between">
+            <div className="settings-container">
+                <div className=" search flex space-between">
+                    <Search filterBy={this.state.filterBy} handleChange={this.handleSearchChange}></Search>
+                    <div className="filt-sort-cont">
                     <FilterEmail filterStatus={this.state.filterStatus} handleChange={this.handleStatusChange}></FilterEmail>
                     <SortEmail sortBy={this.state.sortBy} handleChange={this.handleSortChange}></SortEmail>
-                    <ReadStatusSelection selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}></ReadStatusSelection>
+                    </div>
+                </div>
+                <div className="selection-control flex">
                     <DeleteSelection
                         deleteSelected={this.deleteSelected}>
                     </DeleteSelection>
+                    <ReadStatusSelection selectedUnRead={this.state.selectedUnRead} updateIsReadSelected={this.updateIsReadSelected}>
+                    </ReadStatusSelection>
                     <AddStarSelection
                         selectedUnStar={this.state.selectedUnStar} updateIsStarredSelected={this.updateIsStarredSelected}>
                     </AddStarSelection>

@@ -48,9 +48,9 @@ export default class EmailDetailPage extends React.Component {
 
     render() {
         if (!this.state.email) return <div className="loading"> Loading...</div>
-        return <React.Fragment>
-            <EmailDetail onCreateNote={this.onCreateNote} email={this.state.email} delete={() => this.onDelete(this.state.email)} goBack={this.goBack}></EmailDetail>
-            <Link to={{ pathname: "/email/compose", state: this.state.email }}>Reply</Link>
-        </React.Fragment>
+        return <div className="email-details-cont">
+                    <EmailDetail onCreateNote={this.onCreateNote} email={this.state.email} delete={() => this.onDelete(this.state.email)} goBack={this.goBack}></EmailDetail>
+                    <Link to={{ pathname: "/email/compose", state: this.state.email }}>Reply</Link>
+                </div>
     }
 }

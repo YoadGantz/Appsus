@@ -15,10 +15,10 @@ export default class NoteTodos extends React.Component {
         return <React.Fragment>
             <li class-name="note-container flex column totally-center"
                 style={{ backgroundColor: bgc, color: color }}>
-                <p className="note-title"> {this.props.note.info.title}</p>
-                <ul className="note-content full">{todos.map((todo, i) => {
+                <p className="note-title"> {this.props.note.info.title}</p>
+                <ul className="clean-list note-content todos full">{todos.map((todo, i) => {
 
-                    return <li className={(todo.isDone ? 'done' : '')} key={i}>{todo.txtInput}
+                    return <li className={(todo.isDone ? 'done' : '')} key={i}><p>{todo.txtInput}</p>
                         <input type="checkbox" checked={todo.isDone} onClick={() => this.props.onTodoDone(todo.id, this.props.note.id)}></input>
                     </li>
 

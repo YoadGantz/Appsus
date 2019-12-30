@@ -11,14 +11,14 @@ export default class BookApp extends React.Component {
 
     render() {
         return (
-            <main>
+            <div className="book-app flex align-center column">
                 <Router history={history}>
                     <Switch>
                         <Route component={BookPage} path="/book" exact></Route>
                         <Route component={BookDetailPage} path="/book/:id" exact></Route>
                     </Switch>
                 </Router>
-            </main>
+                </div>
         )
     }
 }
