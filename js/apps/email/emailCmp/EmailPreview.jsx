@@ -28,7 +28,7 @@ export default class EmailPreview extends React.Component {
                     <input className="btn" type="checkbox" onClick={this.onSelect} />
                 </td>
                 <td>
-                    <img className={(email.isStarred) ? 'star btn' : 'un-star btn'} height="16px" src="../../../../imgs/icons/star.svg" onClick={this.onStar} />
+                    <img className={(email.isStarred) ? 'star btn' : 'un-star btn'} height="16px" src="./imgs/icons/star.svg" onClick={this.onStar} />
                 </td>
                 <td className="sent-by">
                     {email.sentBy}
@@ -40,7 +40,7 @@ export default class EmailPreview extends React.Component {
                     <LongTxt onExpand={this.onExpand} text={email.body} shortLength={30}></LongTxt>
                 </td>
                 <td>
-                    <img title="Expand" className="open-mail btn" onClick={this.onExpand} height="20px" src="../../imgs/icons/expand.svg" />
+                    <img title="Expand" className="open-mail btn" onClick={this.onExpand} height="20px" src="./imgs/icons/expand.svg" />
                 </td>
                 <td>
                     {sentAt}

@@ -31,7 +31,7 @@ export default class NoteText extends React.Component {
                     onCreateEmail={this.props.onCreateEmail}
                 >
                 </NoteEditControl>
-                <img className="btn" title="Create an Email" onClick={this.onCreateEmail} height="25px" src="../imgs/icons/email.svg" />
+                <img className="btn" title="Create an Email" onClick={this.onCreateEmail} height="25px" src="./imgs/icons/email.svg" />
             </div>
         </li>
     }

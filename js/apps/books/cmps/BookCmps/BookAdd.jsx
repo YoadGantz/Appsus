@@ -21,9 +21,9 @@ export default class BookAdd extends React.Component {
     render() {
         return <div>
                     <div className="search-container flex align-center">
-                        <img height="20px" className="search-icon" src="../../../imgs/icons/search-icon.svg" />
+                        <img height="20px" className="search-icon" src="./imgs/icons/search-icon.svg" />
                         <input className="search-input" type="search" onInput={this.loadBooksResults} placeholder="Add a book" />
-                        <img className="search-x" src="../../../imgs/icons/x-icon.svg" />
+                        <img className="search-x" src="./imgs/icons/x-icon.svg" />
                     </div>
                     <ul>
                         {this.state.googleBooks.map((googleBook, i) => {

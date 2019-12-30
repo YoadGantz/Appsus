@@ -15,8 +15,8 @@ export default class EmailDetail extends React.Component {
         return <div>
             <div className="details-control flex">
                 <span className="btn" onClick={this.props.goBack}>BACK</span>
-                <img className="btn" onClick={this.props.onCreateNote} title="Save to note" height="20px" src="../../../imgs/icons/send-note.svg" />
-                <img className="btn" title="Delete" onClick={this.props.delete} height="20px" src="../imgs/icons/delete.svg" />
+                <img className="btn" onClick={this.props.onCreateNote} title="Save to note" height="20px" src="./imgs/icons/send-note.svg" />
+                <img className="btn" title="Delete" onClick={this.props.delete} height="20px" src="./imgs/icons/delete.svg" />
             </div>
             <div>
                 <p><span>Sent At:</span>{sentAt}</p>
