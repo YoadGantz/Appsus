@@ -7,8 +7,9 @@ export default class EmailList extends React.Component {
 
     render() {
         return (
-            <div className="emails-container">
-                <ul className="email-container clean-list">
+            <div className="emails-table">
+                <table className="emails-container">
+                    <tbody>
                     {this.props.emails.map(email =>
                         <EmailPreview
                             goToDetails={this.props.goToDetails}
@@ -18,7 +19,8 @@ export default class EmailList extends React.Component {
                             email={email}>
                         </EmailPreview>
                     )}
-                </ul>
+                    </tbody>
+                </table>
             </div>
         )
     }

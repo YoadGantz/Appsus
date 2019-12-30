@@ -5,7 +5,7 @@ export default function FilterEmail(props) {
         props.handleChange(input)
 
     }
-    return <select className="border btn" name="filterReadStatus" id="filterReadStatus" onChange={inputChange}>
+    return <select className="btn" name="filterReadStatus" id="filterReadStatus" onChange={inputChange}>
         <option className="border" value="isAll">All</option>
         <option className="border" value="isRead">Read</option>
         <option className="border" value="isUnread">Unread</option>

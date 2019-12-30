@@ -8,7 +8,7 @@ export default class NoteVideo extends React.Component {
         let color = style.color || 'black';
         return <React.Fragment>
             <li class-name="note-container flex column totally-center" style={{ backgroundColor: bgc, color: color }}>
-                <iframe className="note-content full vid" type="text/html" id="player" width="260" height="150" src={vidUrl} frameBorder="0"></iframe>
+                <iframe className="note-content full vid" type="text/html" id="player" width="300px" height="150" src={vidUrl} frameBorder="0"></iframe>
                 <p className="note-title"> {this.props.note.info.title}</p>
                 <NoteEditControl
                     togglePin={this.props.togglePin}

@@ -5,7 +5,7 @@ export default class EmailDetail extends React.Component {
     showSentAtFormatted = (email) => {
         let date = new Date(email.sentAt)
         if (date.getDate() === new Date().getDate()) return `${date.getHours()}:${date.getMinutes()}`
-        return `${date.getDate()}/${date.getMonth()+1}`
+        return `${date.getDate()}/${date.getMonth() + 1}`
     }
 
 
@@ -13,11 +13,13 @@ export default class EmailDetail extends React.Component {
         const email = this.props.email;
         const sentAt = this.showSentAtFormatted(email)
         return <div>
-            <span onClick={this.props.goBack}>BACK</span>
-            <img onClick={this.props.onCreateNote} title = "Save to note" height="20px" src="../../../imgs/icons/send-note.svg"/>
-            <img onClick={this.props.delete} height="20px" src="../imgs/icons/delete.svg"/>
+            <div className="details-control flex">
+                <span className="btn" onClick={this.props.goBack}>BACK</span>
+                <img className="btn" onClick={this.props.onCreateNote} title="Save to note" height="20px" src="../../../imgs/icons/send-note.svg" />
+                <img className="btn" title="Delete" onClick={this.props.delete} height="20px" src="../imgs/icons/delete.svg" />
+            </div>
             <div>
-                <p>{sentAt}</p>
+                <p><span>Sent At:</span>{sentAt}</p>
                 <h3><span>Subject</span>: {email.subject}</h3>
                 <p>{email.body}</p>
             </div>

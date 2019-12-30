@@ -140,29 +140,20 @@ function createTodo(txtInput) {
 
 function createNotes() { // consider creating a constructor for note 
     let notes = []
+    notes.push(createNote('NoteImage', "https://media.giphy.com/media/xULW8PLGQwyZNaw68U/giphy.gif"))
+    notes.push(createNote('NoteImage', "https://pbs.twimg.com/media/D_Q_MEAU8AUBau5.jpg"))
     notes.push(createNote('NoteImage', "http://tripjaunt.com/wp-content/uploads/2016/11/magicalplaces-featured.jpg"))
     notes.push(createNote('NoteText', "Can't wait for 17/2/20"))
+    notes.push(createNote('NoteVideo', "https://www.youtube.com/embed/ZW3rR9_E3Rw"))
+    notes.push(createNote('NoteImage', "https://images.theconversation.com/files/296905/original/file-20191014-135529-xgmui3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"))
     notes.push(createNote('NoteText', "If opportunity doesn't knock, build a door. \"Milton Berle\""))
-    notes.push(createNote('NoteImage', "https://i.redd.it/u7vzzy7puzr11.jpg"))
-    notes.push(createNote('NoteImage', "http://tripjaunt.com/wp-content/uploads/2016/11/magicalplaces-featured.jpg"))
-    notes.push(createNote('NoteText', "Can't wait for 17/2/20"))
-    notes.push(createNote('NoteText', "If opportunity doesn't knock, build a door. \"Milton Berle\""))
-    notes.push(createNote('NoteImage', "https://i.redd.it/u7vzzy7puzr11.jpg"))
+    notes.push(createNote('NoteImage', "https://media.giphy.com/media/1d7F9xyq6j7C1ojbC5/giphy.gif"))
     notes.push(createNote('NoteText', "This is AWESOME"))
+    notes.push(createNote('NoteImage', "https://cupheadmemes.com/wp-content/uploads/2018/08/Best-Programming-Memes-03.jpg"))
     notes.push(createNote('NoteTodos', [createTodo("Rome"), createTodo('Tahiti')
         , createTodo('Milano'), createTodo('Iceland')]))
-    notes.push(createNote('NoteImage', "https://media.giphy.com/media/1d7F9xyq6j7C1ojbC5/giphy.gif"))
-    notes.push(createNote('NoteVideo', "https://www.youtube.com/embed/ZW3rR9_E3Rw"))
-    notes.push(createNote('NoteText', "What’s the best thing about Switzerland? I don’t know, but the flag is a big plus."))
-    notes.push(createNote('NoteImage', "https://images.theconversation.com/files/296905/original/file-20191014-135529-xgmui3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"))
-    notes.push(createNote('NoteImage', "https://media.giphy.com/media/1d7F9xyq6j7C1ojbC5/giphy.gif"))
-    notes.push(createNote('NoteImage', "https://media.giphy.com/media/1d7F9xyq6j7C1ojbC5/giphy.gif"))
-    notes.push(createNote('NoteVideo', "https://www.youtube.com/embed/ZW3rR9_E3Rw"))
-    notes.push(createNote('NoteText', "What’s the best thing about Switzerland? I don’t know, but the flag is a big plus."))
-    notes.push(createNote('NoteVideo', "https://www.youtube.com/embed/ZW3rR9_E3Rw"))
-    notes.push(createNote('NoteText', "What’s the best thing about Switzerland? I don’t know, but the flag is a big plus."))
-    notes.push(createNote('NoteImage', "https://images.theconversation.com/files/296905/original/file-20191014-135529-xgmui3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"))
-
+    notes.push(createNote('NoteImage', "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"))
+        notes.push(createNote('NoteImage', "https://i.redd.it/u7vzzy7puzr11.jpg"))
 
     storageService.store('gNotes', notes)
     return notes

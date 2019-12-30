@@ -5,6 +5,6 @@ export default class AddStarSelection extends React.Component {
     }
 
     render() { 
-        return <div className="btn" onClick={this.updateSelected}> {this.props.selectedUnStar ? "Add a star" : "Remove a star"}  </div >
+        return <div className="btn" onClick={this.updateSelected}> {this.props.selectedUnStar ? <img className="star" title="Add star" height="20px" src="../../../imgs/icons/star-filled.svg"/> : <img title="Remove star" height="20px" src="../../../imgs/icons/star.svg"/>}  </div >
     }
 }

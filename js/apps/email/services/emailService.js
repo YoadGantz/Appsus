@@ -13,7 +13,7 @@ function getEmailById(emailId) {
 }
 
 function sendEmail(subject, body, isRead, sentAt) {
-    const email = createEmail('me',subject, body, isRead, sentAt);
+    const email = createEmail('me', subject, body, isRead, sentAt);
     gEmails.push(email)
     saveEmails()
     return Promise.resolve(email)
@@ -121,6 +121,7 @@ function unSelectAll() {
 function toggleStarred(email) {
     email.isStarred = !email.isStarred
     let selectedUnStar = checkSelectedUnStar()
+    saveEmails();
     return Promise.resolve(selectedUnStar)
 }
 
@@ -152,7 +153,6 @@ function deleteSelected() {
 
 
 function createEmail(sentBy, subject, body, isRead, sentAt) {
-    console.log(sentBy)
     const email = {
         id: utils.getRandomId(),
         sentBy,
@@ -205,6 +205,24 @@ function createEmails() {
         false,
         Date.now()))
     emails.push(createEmail(
+        'Evelyn Marks',
+        'Here\'s what you missed from Google Photos',
+        'Nemo autem ipsam rerum natus vel a libero saepe est. Aspernatur quia ut quos dolorum dolor. Nostrum autem assumenda minus dolores modi molestiae ad rerum.',
+        false,
+        Date.now()))
+    emails.push(createEmail(
+        'Google photos',
+        'Wassap?',
+        'Non nobis explicabo voluptas ad occaecati voluptas atque et. Harum praesentium enim dolore odit delectus ea et. Dolor aut ratione quia temporibus. Possimus quo eum dolor debitis accusamus dolore earum sint. Ab minus commodi aliquam blanditiis.',
+        false,
+        Date.now()))
+    emails.push(createEmail(
+        'Wilber Hane',
+        'How are you?',
+        'Occaecati ducimus autem voluptates ut vel suscipit consequatur aut quod. Repellendus et quia dolores atque tempora explicabo omnis. At enim culpa soluta autem quo ratione. Aut quia minima earum enim.',
+        false,
+        Date.now()))
+    emails.push(createEmail(
         'Medium Daily',
         'More related to "How can I be a good developer?"',
         'Sequi rerum et eos minus rerum labore. Vitae deleniti tempore natus nulla dolor. Et aut autem pariatur officiis.',
@@ -214,6 +232,30 @@ function createEmails() {
         'Evelyn Marks',
         'Here\'s what you missed from Google Photos',
         'Nemo autem ipsam rerum natus vel a libero saepe est. Aspernatur quia ut quos dolorum dolor. Nostrum autem assumenda minus dolores modi molestiae ad rerum.',
+        false,
+        Date.now()))
+    emails.push(createEmail(
+        'Millie Funk',
+        'The Most Clever Life-Hack I’ve Ever Learned',
+        'Et est consequatur fugit deserunt similique velit.',
+        true,
+        Date.now()))
+    emails.push(createEmail(
+        'Delaney Moore',
+        'Weekly Coding Challenges',
+        "Help the bookseller!    A bookseller has lots of books classified in 26 categories labeled A, B, ... Z. Each book has a code c of 3, 4, 5 or more capitals letters. The 1st letter of a code is the capital letter of the book category. In the bookseller's stocklist each code c is followed by a space and by a positive integer n (int n >= 0) which indicates the quantity of books of this code in stock. Your task is to find all the books of L with codes belonging to each category of M and to sum their quantity according to each category.",
+        false,
+        Date.now()))
+    emails.push(createEmail(
+        'Millie Funk',
+        'The Most Clever Life-Hack I’ve Ever Learned',
+        'Et est consequatur fugit deserunt similique velit.',
+        true,
+        Date.now()))
+    emails.push(createEmail(
+        'Google photos',
+        'Wassap?',
+        'Non nobis explicabo voluptas ad occaecati voluptas atque et. Harum praesentium enim dolore odit delectus ea et. Dolor aut ratione quia temporibus. Possimus quo eum dolor debitis accusamus dolore earum sint. Ab minus commodi aliquam blanditiis.',
         false,
         Date.now()))
     emails.push(createEmail(
